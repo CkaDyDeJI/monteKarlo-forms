@@ -49,6 +49,8 @@ namespace monteKarlo_forms
             double randomY;
             for (var i = 0; i < 5; i++)
             {
+                watch.Start();
+
                 double n = Math.Pow(10, i + 3);
 
                 insideCounter = 0;
@@ -61,12 +63,17 @@ namespace monteKarlo_forms
                 }
 
                 var square = square_ * insideCounter / n;
+
+                watch.Stop();
+                
                 data.addSquare(square);
                 data.addAcc(Math.Abs(square - actuallySquare) / actuallySquare);
-            }
+                data.addPoints (n);
+                data.addPointsInside (insideCounter);
+                data.addTime (watch.Elapsed);
 
-            watch.Stop();
-            data.time = watch.Elapsed;
+                watch.Reset();
+            }
 
             return data;
         }

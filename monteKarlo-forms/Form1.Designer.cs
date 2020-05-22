@@ -42,9 +42,21 @@
             this.figureGroupBox = new System.Windows.Forms.GroupBox();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.groupBoxOOP = new System.Windows.Forms.GroupBox();
-            this.forOOP = new System.Windows.Forms.RichTextBox();
+            this.objectDataGrid = new System.Windows.Forms.DataGridView();
+            this.numberOfDots = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.numberOfPointsInside = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.actualSquareColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.MKSquare = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.accura = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.timeColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBoxNonOOP = new System.Windows.Forms.GroupBox();
-            this.forNonOOP = new System.Windows.Forms.RichTextBox();
+            this.procedureDataGrid = new System.Windows.Forms.DataGridView();
+            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.statusLabel = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripContainer1 = new System.Windows.Forms.ToolStripContainer();
@@ -56,7 +68,9 @@
             this.figureGroupBox.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.groupBoxOOP.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.objectDataGrid)).BeginInit();
             this.groupBoxNonOOP.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.procedureDataGrid)).BeginInit();
             this.statusStrip1.SuspendLayout();
             this.toolStripContainer1.BottomToolStripPanel.SuspendLayout();
             this.toolStripContainer1.ContentPanel.SuspendLayout();
@@ -202,7 +216,7 @@
             // 
             // groupBoxOOP
             // 
-            this.groupBoxOOP.Controls.Add(this.forOOP);
+            this.groupBoxOOP.Controls.Add(this.objectDataGrid);
             this.groupBoxOOP.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBoxOOP.Location = new System.Drawing.Point(3, 3);
             this.groupBoxOOP.Name = "groupBoxOOP";
@@ -211,18 +225,57 @@
             this.groupBoxOOP.TabStop = false;
             this.groupBoxOOP.Text = "ООП";
             // 
-            // forOOP
+            // objectDataGrid
             // 
-            this.forOOP.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.forOOP.Location = new System.Drawing.Point(3, 16);
-            this.forOOP.Name = "forOOP";
-            this.forOOP.Size = new System.Drawing.Size(559, 338);
-            this.forOOP.TabIndex = 0;
-            this.forOOP.Text = "";
+            this.objectDataGrid.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.objectDataGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.objectDataGrid.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.numberOfDots,
+            this.numberOfPointsInside,
+            this.actualSquareColumn,
+            this.MKSquare,
+            this.accura,
+            this.timeColumn});
+            this.objectDataGrid.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.objectDataGrid.Location = new System.Drawing.Point(3, 16);
+            this.objectDataGrid.Name = "objectDataGrid";
+            this.objectDataGrid.RowHeadersVisible = false;
+            this.objectDataGrid.Size = new System.Drawing.Size(559, 338);
+            this.objectDataGrid.TabIndex = 1;
+            // 
+            // numberOfDots
+            // 
+            this.numberOfDots.HeaderText = "Количество точек";
+            this.numberOfDots.Name = "numberOfDots";
+            // 
+            // numberOfPointsInside
+            // 
+            this.numberOfPointsInside.HeaderText = "Количество точек внутри";
+            this.numberOfPointsInside.Name = "numberOfPointsInside";
+            // 
+            // actualSquareColumn
+            // 
+            this.actualSquareColumn.HeaderText = "Площадь фигуры";
+            this.actualSquareColumn.Name = "actualSquareColumn";
+            // 
+            // MKSquare
+            // 
+            this.MKSquare.HeaderText = "Площадь методом МК";
+            this.MKSquare.Name = "MKSquare";
+            // 
+            // accura
+            // 
+            this.accura.HeaderText = "Погрешность, %";
+            this.accura.Name = "accura";
+            // 
+            // timeColumn
+            // 
+            this.timeColumn.HeaderText = "Время работы, мс";
+            this.timeColumn.Name = "timeColumn";
             // 
             // groupBoxNonOOP
             // 
-            this.groupBoxNonOOP.Controls.Add(this.forNonOOP);
+            this.groupBoxNonOOP.Controls.Add(this.procedureDataGrid);
             this.groupBoxNonOOP.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBoxNonOOP.Location = new System.Drawing.Point(574, 3);
             this.groupBoxNonOOP.Name = "groupBoxNonOOP";
@@ -231,14 +284,53 @@
             this.groupBoxNonOOP.TabStop = false;
             this.groupBoxNonOOP.Text = "Процедурно";
             // 
-            // forNonOOP
+            // procedureDataGrid
             // 
-            this.forNonOOP.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.forNonOOP.Location = new System.Drawing.Point(3, 16);
-            this.forNonOOP.Name = "forNonOOP";
-            this.forNonOOP.Size = new System.Drawing.Size(560, 338);
-            this.forNonOOP.TabIndex = 0;
-            this.forNonOOP.Text = "";
+            this.procedureDataGrid.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.procedureDataGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.procedureDataGrid.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dataGridViewTextBoxColumn1,
+            this.dataGridViewTextBoxColumn2,
+            this.dataGridViewTextBoxColumn3,
+            this.dataGridViewTextBoxColumn4,
+            this.dataGridViewTextBoxColumn5,
+            this.dataGridViewTextBoxColumn6});
+            this.procedureDataGrid.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.procedureDataGrid.Location = new System.Drawing.Point(3, 16);
+            this.procedureDataGrid.Name = "procedureDataGrid";
+            this.procedureDataGrid.RowHeadersVisible = false;
+            this.procedureDataGrid.Size = new System.Drawing.Size(560, 338);
+            this.procedureDataGrid.TabIndex = 2;
+            // 
+            // dataGridViewTextBoxColumn1
+            // 
+            this.dataGridViewTextBoxColumn1.HeaderText = "Количество точек";
+            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+            // 
+            // dataGridViewTextBoxColumn2
+            // 
+            this.dataGridViewTextBoxColumn2.HeaderText = "Количество точек внутри";
+            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
+            // 
+            // dataGridViewTextBoxColumn3
+            // 
+            this.dataGridViewTextBoxColumn3.HeaderText = "Площадь фигуры";
+            this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
+            // 
+            // dataGridViewTextBoxColumn4
+            // 
+            this.dataGridViewTextBoxColumn4.HeaderText = "Площадь методом МК";
+            this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
+            // 
+            // dataGridViewTextBoxColumn5
+            // 
+            this.dataGridViewTextBoxColumn5.HeaderText = "Погрешность, %";
+            this.dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
+            // 
+            // dataGridViewTextBoxColumn6
+            // 
+            this.dataGridViewTextBoxColumn6.HeaderText = "Время работы, мс";
+            this.dataGridViewTextBoxColumn6.Name = "dataGridViewTextBoxColumn6";
             // 
             // statusStrip1
             // 
@@ -292,7 +384,9 @@
             this.figureGroupBox.ResumeLayout(false);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.groupBoxOOP.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.objectDataGrid)).EndInit();
             this.groupBoxNonOOP.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.procedureDataGrid)).EndInit();
             this.statusStrip1.ResumeLayout(false);
             this.statusStrip1.PerformLayout();
             this.toolStripContainer1.BottomToolStripPanel.ResumeLayout(false);
@@ -310,9 +404,7 @@
         private System.Windows.Forms.SplitContainer splitContainer1;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private System.Windows.Forms.GroupBox groupBoxOOP;
-        private System.Windows.Forms.RichTextBox forOOP;
         private System.Windows.Forms.GroupBox groupBoxNonOOP;
-        private System.Windows.Forms.RichTextBox forNonOOP;
         private System.Windows.Forms.StatusStrip statusStrip1;
         private System.Windows.Forms.ToolStripStatusLabel statusLabel;
         private System.Windows.Forms.ToolStripContainer toolStripContainer1;
@@ -326,6 +418,20 @@
         private System.Windows.Forms.TextBox upPoint;
         private System.Windows.Forms.TextBox leftPoint;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.DataGridView objectDataGrid;
+        private System.Windows.Forms.DataGridViewTextBoxColumn numberOfDots;
+        private System.Windows.Forms.DataGridViewTextBoxColumn numberOfPointsInside;
+        private System.Windows.Forms.DataGridViewTextBoxColumn actualSquareColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn MKSquare;
+        private System.Windows.Forms.DataGridViewTextBoxColumn accura;
+        private System.Windows.Forms.DataGridViewTextBoxColumn timeColumn;
+        private System.Windows.Forms.DataGridView procedureDataGrid;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn5;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn6;
     }
 }
 

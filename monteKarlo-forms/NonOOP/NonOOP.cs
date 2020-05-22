@@ -168,7 +168,7 @@ namespace monteKarlo_forms
 
         private bool isInsideCircle(double x, double y)
         {
-            return ((Math.Sqrt((x - circleY_) * (x - circleY_) + y * y)) <= radius_) ? true : false;
+            return ((Math.Sqrt((x - circleX_) * (x - circleX_) + y * y)) <= radius_) ? true : false;
         }
 
 

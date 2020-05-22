@@ -46,6 +46,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Drawing.cs" />
     <Compile Include="NonOOP\NonOOP.cs" />
     <Compile Include="OOP\Circle.cs" />
     <Compile Include="OOP\Figure.cs" />

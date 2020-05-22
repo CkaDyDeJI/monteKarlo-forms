@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 
 
@@ -9,25 +10,34 @@ namespace monteKarlo_forms
     public partial class Form1 : Form
     {
         private Point[] withPoints_ = new Point[4];
-
+        private Drawing drawing;
 
         public Form1()
         {
             InitializeComponent();
+            drawFigure();
         }
 
 
-        private void calculateButton_Click(object sender, EventArgs e)
+        private async void calculateButton_Click(object sender, EventArgs e)
         {
             if (setPoints() == false) {
                 return;
             }
+
+            statusLabel.Text = "Calculating...";
+            splitContainer1.Enabled = false;
+
+            await Task.Delay(1);
 
             OOP main1 = new OOP(withPoints_);
             outputResult(main1.calculate(), 0);
 
             NonOOP main2 = new NonOOP();
             outputResult (main2.doStuff(withPoints_), 1);
+
+            splitContainer1.Enabled = true;
+            statusLabel.Text = "Done";
         }
 
 
@@ -42,6 +52,14 @@ namespace monteKarlo_forms
             }
 
             textBoxes[textBoxNumber].Text += $"Настоящая Площадь = {dataForOutput.actualSquare}\n\r\n\rВремя Затрачено: {dataForOutput.time}";
+        }
+
+
+        private void drawFigure()
+        {
+            drawing = new Drawing (figurePicture.Width, figurePicture.Height);
+            //figurePicture.Image = null;
+            figurePicture.Image = drawing.getBitmap();
         }
 
 

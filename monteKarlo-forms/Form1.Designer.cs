@@ -110,8 +110,8 @@
             // splitContainer1.Panel2
             // 
             this.splitContainer1.Panel2.Controls.Add(this.tableLayoutPanel1);
-            this.splitContainer1.Size = new System.Drawing.Size(1143, 565);
-            this.splitContainer1.SplitterDistance = 198;
+            this.splitContainer1.Size = new System.Drawing.Size(1143, 590);
+            this.splitContainer1.SplitterDistance = 206;
             this.splitContainer1.TabIndex = 10;
             // 
             // label1
@@ -211,7 +211,7 @@
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 1;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(1143, 363);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(1143, 380);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
             // groupBoxOOP
@@ -220,7 +220,7 @@
             this.groupBoxOOP.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBoxOOP.Location = new System.Drawing.Point(3, 3);
             this.groupBoxOOP.Name = "groupBoxOOP";
-            this.groupBoxOOP.Size = new System.Drawing.Size(565, 357);
+            this.groupBoxOOP.Size = new System.Drawing.Size(565, 374);
             this.groupBoxOOP.TabIndex = 0;
             this.groupBoxOOP.TabStop = false;
             this.groupBoxOOP.Text = "ООП";
@@ -240,7 +240,7 @@
             this.objectDataGrid.Location = new System.Drawing.Point(3, 16);
             this.objectDataGrid.Name = "objectDataGrid";
             this.objectDataGrid.RowHeadersVisible = false;
-            this.objectDataGrid.Size = new System.Drawing.Size(559, 338);
+            this.objectDataGrid.Size = new System.Drawing.Size(559, 355);
             this.objectDataGrid.TabIndex = 1;
             // 
             // numberOfDots
@@ -279,7 +279,7 @@
             this.groupBoxNonOOP.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBoxNonOOP.Location = new System.Drawing.Point(574, 3);
             this.groupBoxNonOOP.Name = "groupBoxNonOOP";
-            this.groupBoxNonOOP.Size = new System.Drawing.Size(566, 357);
+            this.groupBoxNonOOP.Size = new System.Drawing.Size(566, 374);
             this.groupBoxNonOOP.TabIndex = 1;
             this.groupBoxNonOOP.TabStop = false;
             this.groupBoxNonOOP.Text = "Процедурно";
@@ -299,7 +299,7 @@
             this.procedureDataGrid.Location = new System.Drawing.Point(3, 16);
             this.procedureDataGrid.Name = "procedureDataGrid";
             this.procedureDataGrid.RowHeadersVisible = false;
-            this.procedureDataGrid.Size = new System.Drawing.Size(560, 338);
+            this.procedureDataGrid.Size = new System.Drawing.Size(560, 355);
             this.procedureDataGrid.TabIndex = 2;
             // 
             // dataGridViewTextBoxColumn1
@@ -359,7 +359,7 @@
             // toolStripContainer1.ContentPanel
             // 
             this.toolStripContainer1.ContentPanel.Controls.Add(this.splitContainer1);
-            this.toolStripContainer1.ContentPanel.Size = new System.Drawing.Size(1143, 565);
+            this.toolStripContainer1.ContentPanel.Size = new System.Drawing.Size(1143, 590);
             this.toolStripContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.toolStripContainer1.Location = new System.Drawing.Point(0, 0);
             this.toolStripContainer1.Name = "toolStripContainer1";

@@ -30,15 +30,6 @@
         {
             this.figurePicture = new System.Windows.Forms.PictureBox();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
-            this.figureGroupBox = new System.Windows.Forms.GroupBox();
-            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-            this.groupBoxOOP = new System.Windows.Forms.GroupBox();
-            this.forOOP = new System.Windows.Forms.RichTextBox();
-            this.groupBoxNonOOP = new System.Windows.Forms.GroupBox();
-            this.forNonOOP = new System.Windows.Forms.RichTextBox();
-            this.statusStrip1 = new System.Windows.Forms.StatusStrip();
-            this.statusLabel = new System.Windows.Forms.ToolStripStatusLabel();
-            this.toolStripContainer1 = new System.Windows.Forms.ToolStripContainer();
             this.label1 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.downPoint = new System.Windows.Forms.TextBox();
@@ -48,6 +39,15 @@
             this.upPoint = new System.Windows.Forms.TextBox();
             this.leftPoint = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
+            this.figureGroupBox = new System.Windows.Forms.GroupBox();
+            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.groupBoxOOP = new System.Windows.Forms.GroupBox();
+            this.forOOP = new System.Windows.Forms.RichTextBox();
+            this.groupBoxNonOOP = new System.Windows.Forms.GroupBox();
+            this.forNonOOP = new System.Windows.Forms.RichTextBox();
+            this.statusStrip1 = new System.Windows.Forms.StatusStrip();
+            this.statusLabel = new System.Windows.Forms.ToolStripStatusLabel();
+            this.toolStripContainer1 = new System.Windows.Forms.ToolStripContainer();
             ((System.ComponentModel.ISupportInitialize)(this.figurePicture)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
@@ -96,110 +96,9 @@
             // splitContainer1.Panel2
             // 
             this.splitContainer1.Panel2.Controls.Add(this.tableLayoutPanel1);
-            this.splitContainer1.Size = new System.Drawing.Size(1143, 590);
-            this.splitContainer1.SplitterDistance = 207;
+            this.splitContainer1.Size = new System.Drawing.Size(1143, 565);
+            this.splitContainer1.SplitterDistance = 198;
             this.splitContainer1.TabIndex = 10;
-            // 
-            // figureGroupBox
-            // 
-            this.figureGroupBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.figureGroupBox.Controls.Add(this.figurePicture);
-            this.figureGroupBox.Location = new System.Drawing.Point(710, 3);
-            this.figureGroupBox.Name = "figureGroupBox";
-            this.figureGroupBox.Size = new System.Drawing.Size(430, 180);
-            this.figureGroupBox.TabIndex = 10;
-            this.figureGroupBox.TabStop = false;
-            this.figureGroupBox.Text = "Фигура";
-            // 
-            // tableLayoutPanel1
-            // 
-            this.tableLayoutPanel1.ColumnCount = 2;
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel1.Controls.Add(this.groupBoxOOP, 0, 0);
-            this.tableLayoutPanel1.Controls.Add(this.groupBoxNonOOP, 1, 0);
-            this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
-            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
-            this.tableLayoutPanel1.RowCount = 1;
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(1143, 379);
-            this.tableLayoutPanel1.TabIndex = 0;
-            // 
-            // groupBoxOOP
-            // 
-            this.groupBoxOOP.Controls.Add(this.forOOP);
-            this.groupBoxOOP.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.groupBoxOOP.Location = new System.Drawing.Point(3, 3);
-            this.groupBoxOOP.Name = "groupBoxOOP";
-            this.groupBoxOOP.Size = new System.Drawing.Size(565, 373);
-            this.groupBoxOOP.TabIndex = 0;
-            this.groupBoxOOP.TabStop = false;
-            this.groupBoxOOP.Text = "ООП";
-            // 
-            // forOOP
-            // 
-            this.forOOP.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.forOOP.Location = new System.Drawing.Point(3, 16);
-            this.forOOP.Name = "forOOP";
-            this.forOOP.Size = new System.Drawing.Size(559, 354);
-            this.forOOP.TabIndex = 0;
-            this.forOOP.Text = "";
-            // 
-            // groupBoxNonOOP
-            // 
-            this.groupBoxNonOOP.Controls.Add(this.forNonOOP);
-            this.groupBoxNonOOP.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.groupBoxNonOOP.Location = new System.Drawing.Point(574, 3);
-            this.groupBoxNonOOP.Name = "groupBoxNonOOP";
-            this.groupBoxNonOOP.Size = new System.Drawing.Size(566, 373);
-            this.groupBoxNonOOP.TabIndex = 1;
-            this.groupBoxNonOOP.TabStop = false;
-            this.groupBoxNonOOP.Text = "Процедурно";
-            // 
-            // forNonOOP
-            // 
-            this.forNonOOP.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.forNonOOP.Location = new System.Drawing.Point(3, 16);
-            this.forNonOOP.Name = "forNonOOP";
-            this.forNonOOP.Size = new System.Drawing.Size(560, 354);
-            this.forNonOOP.TabIndex = 0;
-            this.forNonOOP.Text = "";
-            // 
-            // statusStrip1
-            // 
-            this.statusStrip1.Dock = System.Windows.Forms.DockStyle.None;
-            this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.statusLabel});
-            this.statusStrip1.Location = new System.Drawing.Point(0, 0);
-            this.statusStrip1.Name = "statusStrip1";
-            this.statusStrip1.Size = new System.Drawing.Size(1143, 22);
-            this.statusStrip1.TabIndex = 11;
-            this.statusStrip1.Text = "statusStrip1";
-            // 
-            // statusLabel
-            // 
-            this.statusLabel.Name = "statusLabel";
-            this.statusLabel.Size = new System.Drawing.Size(39, 17);
-            this.statusLabel.Text = "Ready";
-            // 
-            // toolStripContainer1
-            // 
-            // 
-            // toolStripContainer1.BottomToolStripPanel
-            // 
-            this.toolStripContainer1.BottomToolStripPanel.Controls.Add(this.statusStrip1);
-            // 
-            // toolStripContainer1.ContentPanel
-            // 
-            this.toolStripContainer1.ContentPanel.Controls.Add(this.splitContainer1);
-            this.toolStripContainer1.ContentPanel.Size = new System.Drawing.Size(1143, 590);
-            this.toolStripContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.toolStripContainer1.Location = new System.Drawing.Point(0, 0);
-            this.toolStripContainer1.Name = "toolStripContainer1";
-            this.toolStripContainer1.Size = new System.Drawing.Size(1143, 612);
-            this.toolStripContainer1.TabIndex = 12;
-            this.toolStripContainer1.Text = "toolStripContainer1";
             // 
             // label1
             // 
@@ -234,6 +133,7 @@
             this.calculateButton.TabIndex = 11;
             this.calculateButton.Text = "Вычислить";
             this.calculateButton.UseVisualStyleBackColor = true;
+            this.calculateButton.Click += new System.EventHandler(this.calculateButton_Click);
             // 
             // rightPoint
             // 
@@ -273,6 +173,107 @@
             this.label2.Size = new System.Drawing.Size(80, 13);
             this.label2.TabIndex = 17;
             this.label2.Text = "Верхняя точка";
+            // 
+            // figureGroupBox
+            // 
+            this.figureGroupBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.figureGroupBox.Controls.Add(this.figurePicture);
+            this.figureGroupBox.Location = new System.Drawing.Point(710, 3);
+            this.figureGroupBox.Name = "figureGroupBox";
+            this.figureGroupBox.Size = new System.Drawing.Size(430, 180);
+            this.figureGroupBox.TabIndex = 10;
+            this.figureGroupBox.TabStop = false;
+            this.figureGroupBox.Text = "Фигура";
+            // 
+            // tableLayoutPanel1
+            // 
+            this.tableLayoutPanel1.ColumnCount = 2;
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel1.Controls.Add(this.groupBoxOOP, 0, 0);
+            this.tableLayoutPanel1.Controls.Add(this.groupBoxNonOOP, 1, 0);
+            this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
+            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
+            this.tableLayoutPanel1.RowCount = 1;
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(1143, 363);
+            this.tableLayoutPanel1.TabIndex = 0;
+            // 
+            // groupBoxOOP
+            // 
+            this.groupBoxOOP.Controls.Add(this.forOOP);
+            this.groupBoxOOP.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.groupBoxOOP.Location = new System.Drawing.Point(3, 3);
+            this.groupBoxOOP.Name = "groupBoxOOP";
+            this.groupBoxOOP.Size = new System.Drawing.Size(565, 357);
+            this.groupBoxOOP.TabIndex = 0;
+            this.groupBoxOOP.TabStop = false;
+            this.groupBoxOOP.Text = "ООП";
+            // 
+            // forOOP
+            // 
+            this.forOOP.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.forOOP.Location = new System.Drawing.Point(3, 16);
+            this.forOOP.Name = "forOOP";
+            this.forOOP.Size = new System.Drawing.Size(559, 338);
+            this.forOOP.TabIndex = 0;
+            this.forOOP.Text = "";
+            // 
+            // groupBoxNonOOP
+            // 
+            this.groupBoxNonOOP.Controls.Add(this.forNonOOP);
+            this.groupBoxNonOOP.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.groupBoxNonOOP.Location = new System.Drawing.Point(574, 3);
+            this.groupBoxNonOOP.Name = "groupBoxNonOOP";
+            this.groupBoxNonOOP.Size = new System.Drawing.Size(566, 357);
+            this.groupBoxNonOOP.TabIndex = 1;
+            this.groupBoxNonOOP.TabStop = false;
+            this.groupBoxNonOOP.Text = "Процедурно";
+            // 
+            // forNonOOP
+            // 
+            this.forNonOOP.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.forNonOOP.Location = new System.Drawing.Point(3, 16);
+            this.forNonOOP.Name = "forNonOOP";
+            this.forNonOOP.Size = new System.Drawing.Size(560, 338);
+            this.forNonOOP.TabIndex = 0;
+            this.forNonOOP.Text = "";
+            // 
+            // statusStrip1
+            // 
+            this.statusStrip1.Dock = System.Windows.Forms.DockStyle.None;
+            this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.statusLabel});
+            this.statusStrip1.Location = new System.Drawing.Point(0, 0);
+            this.statusStrip1.Name = "statusStrip1";
+            this.statusStrip1.Size = new System.Drawing.Size(1143, 22);
+            this.statusStrip1.TabIndex = 11;
+            this.statusStrip1.Text = "statusStrip1";
+            // 
+            // statusLabel
+            // 
+            this.statusLabel.Name = "statusLabel";
+            this.statusLabel.Size = new System.Drawing.Size(39, 17);
+            this.statusLabel.Text = "Ready";
+            // 
+            // toolStripContainer1
+            // 
+            // 
+            // toolStripContainer1.BottomToolStripPanel
+            // 
+            this.toolStripContainer1.BottomToolStripPanel.Controls.Add(this.statusStrip1);
+            // 
+            // toolStripContainer1.ContentPanel
+            // 
+            this.toolStripContainer1.ContentPanel.Controls.Add(this.splitContainer1);
+            this.toolStripContainer1.ContentPanel.Size = new System.Drawing.Size(1143, 565);
+            this.toolStripContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.toolStripContainer1.Location = new System.Drawing.Point(0, 0);
+            this.toolStripContainer1.Name = "toolStripContainer1";
+            this.toolStripContainer1.Size = new System.Drawing.Size(1143, 612);
+            this.toolStripContainer1.TabIndex = 12;
+            this.toolStripContainer1.Text = "toolStripContainer1";
             // 
             // Form1
             // 

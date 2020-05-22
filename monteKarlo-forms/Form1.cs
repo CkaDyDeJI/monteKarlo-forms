@@ -10,7 +10,6 @@ namespace monteKarlo_forms
     public partial class Form1 : Form
     {
         private Point[] withPoints_ = new Point[4];
-        private Drawing drawing;
 
         public Form1()
         {
@@ -57,7 +56,7 @@ namespace monteKarlo_forms
 
         private void drawFigure()
         {
-            drawing = new Drawing (figurePicture.Width, figurePicture.Height);
+            Drawing drawing = new Drawing (figurePicture.Width, figurePicture.Height);
             //figurePicture.Image = null;
             figurePicture.Image = drawing.getBitmap();
         }

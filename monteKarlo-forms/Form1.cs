@@ -44,13 +44,15 @@ namespace monteKarlo_forms
         {
             RichTextBox[] textBoxes = new RichTextBox[] {forOOP, forNonOOP};
 
+            textBoxes[textBoxNumber].Text += "\n\r\n\r";
+
             var squares = dataForOutput.CalculatedSquares;
             var accs = dataForOutput.Accuracies;
             for (int i = 0; i < squares.Count; i++) {
                 textBoxes[textBoxNumber].Text += $"Площадь = {squares[i]}   Погрешность = {accs[i]}\n\r";
             }
 
-            textBoxes[textBoxNumber].Text += $"Настоящая Площадь = {dataForOutput.actualSquare}\n\r\n\rВремя Затрачено: {dataForOutput.time}";
+            textBoxes[textBoxNumber].Text += $"Настоящая Площадь = {dataForOutput.actualSquare}\n\rВремя Затрачено: {dataForOutput.time}";
         }
 
 

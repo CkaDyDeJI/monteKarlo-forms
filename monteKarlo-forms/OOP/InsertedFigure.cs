@@ -6,15 +6,16 @@ namespace monteKarlo_forms
     {
         private Figure wholeFigure_;
 
-        private Circle centerCircle_;
-
         private double k1_;
         private double b1_;
 
         private double k2_;
         private double b2_;
 
-        private  int functionsIsCalculated = 0;
+        private double k3_;
+        private double b3_;
+
+        private int functionsIsCalculated = 0;
 
 
         public InsertedFigure (Figure newFigure)
@@ -22,8 +23,8 @@ namespace monteKarlo_forms
             wholeFigure_ = newFigure;
 
             calculateLinearCoeffsFirst (wholeFigure_.leftPoint_, wholeFigure_.upPoint_);
-            calculateLinearCoeffsSecond (wholeFigure_.leftPoint_, wholeFigure_.downPoint_);
-            calculateCircleCenter (wholeFigure_.rightPoint_, wholeFigure_.upPoint_);
+            calculateLinearCoeffsSecond (wholeFigure_.upPoint_, wholeFigure_.rightPoint_);
+            calculateLinearCoeffsThird(wholeFigure_.leftPoint_, wholeFigure_.rightPoint_); 
         }
 
 
@@ -36,16 +37,12 @@ namespace monteKarlo_forms
                 return false;
             }
 
-            if (newPoint.X < centerCircle_.X)
-            {
-                if ((isLowerlinearFunction(newPoint.X, newPoint.Y) == true) &&
-                    (isUpperlinearFunction(newPoint.X, newPoint.Y) == true))
-                    return true;
-                else
-                    return false;
-            }
+            if ((isLowerlinearFunctionFirst(newPoint.X, newPoint.Y) == true) &&
+                (isLowerlinearFunctionSecond(newPoint.X, newPoint.Y) == true) &&
+                (isUpperlinearFunction(newPoint.X, newPoint.Y) == true))
+                return true;
             else
-                return isInsideCircle(newPoint.X, newPoint.Y);
+                return false;
         }
 
 
@@ -67,36 +64,38 @@ namespace monteKarlo_forms
         }
 
 
-        private bool isLowerlinearFunction(double x, double y)
+        private void calculateLinearCoeffsThird(Point firstPoint, Point secondPoint)
         {
-            return (y < (k1_ * x + b1_)) ? true : false;
-        }
-
-
-        private bool isUpperlinearFunction(double x, double y)
-        {
-            return (y > (k2_ * x + b2_)) ? true : false;
-        }
-
-
-        private void calculateCircleCenter(Point cPoint, Point dPoint)
-        {
-            centerCircle_ = new Circle(new Point(dPoint.X, cPoint.Y), cPoint.X - dPoint.X);
+            k3_ = (secondPoint.Y - firstPoint.Y) / (secondPoint.X - firstPoint.X);
+            b3_ = firstPoint.Y - k3_ * firstPoint.X;
 
             functionsIsCalculated++;
         }
 
 
-        private bool isInsideCircle(double x, double y)
+        private bool isLowerlinearFunctionFirst(double x, double y)
         {
-            return ((Math.Sqrt((x - centerCircle_.X) * (x - centerCircle_.X) + y * y)) <= centerCircle_.Radius) ? true : false;
+            return (y < (k1_ * x + b1_)) ? true : false;
+        }
+
+
+        private bool isLowerlinearFunctionSecond(double x, double y)
+        {
+            return (y < (k2_ * x + b2_)) ? true : false;
+        }
+
+
+        private bool isUpperlinearFunction(double x, double y)
+        {
+            return (y > (k3_ * x + b3_)) ? true : false;
         }
 
 
         public double calculateActualSquare()
         {
-            return (centerCircle_.X - wholeFigure_.leftPoint_.X) * (wholeFigure_.upPoint_.Y - wholeFigure_.downPoint_.Y) - ((wholeFigure_.upPoint_.Y - wholeFigure_.leftPoint_.Y) * (wholeFigure_.upPoint_.X - wholeFigure_.leftPoint_.X) * 0.5) -
-                ((wholeFigure_.downPoint_.X - wholeFigure_.leftPoint_.X) * (wholeFigure_.leftPoint_.Y - wholeFigure_.downPoint_.Y) * 0.5) + (Math.PI * centerCircle_.Radius * centerCircle_.Radius / 4);
+            return (wholeFigure_.square_ - ((wholeFigure_.maxY_ - wholeFigure_.leftPoint_.Y) * (wholeFigure_.upPoint_.X - wholeFigure_.minX_) * 0.5) - ((wholeFigure_.maxX_ - wholeFigure_.upPoint_.X) * (wholeFigure_.maxY_ - wholeFigure_.rightPoint_.Y) * 0.5) - (0.5 * ((wholeFigure_.leftPoint_.Y - wholeFigure_.minY_) + (wholeFigure_.rightPoint_.Y - wholeFigure_.minY_)) * (wholeFigure_.maxX_ - wholeFigure_.minX_)));
+
+            //return (centerCircle_.X - wholeFigure_.leftPoint_.X) * (wholeFigure_.upPoint_.Y - wholeFigure_.downPoint_.Y) - ((wholeFigure_.upPoint_.Y - wholeFigure_.leftPoint_.Y) * (wholeFigure_.upPoint_.X - wholeFigure_.leftPoint_.X) * 0.5) - ((wholeFigure_.downPoint_.X - wholeFigure_.leftPoint_.X) * (wholeFigure_.leftPoint_.Y - wholeFigure_.downPoint_.Y) * 0.5) + (Math.PI * centerCircle_.Radius * centerCircle_.Radius / 4);
 
             //return ((centerCircle_.X - leftDown.X) * centerCircle_.Radius / 2) +
             //       (Math.PI * centerCircle_.Radius * centerCircle_.Radius / 4);

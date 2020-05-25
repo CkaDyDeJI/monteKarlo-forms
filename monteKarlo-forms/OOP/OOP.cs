@@ -13,7 +13,7 @@ namespace monteKarlo_forms
 
         public OOP (Point[] pointsArray)
         {
-            mainFigure_ = new Figure (pointsArray[0], pointsArray[1], pointsArray[2], pointsArray[3]);
+            mainFigure_ = new Figure (pointsArray[0], pointsArray[1], pointsArray[2]);
 
             calculatedFigure_ = new InsertedFigure (mainFigure_);
         }

@@ -31,8 +31,6 @@
             this.figurePicture = new System.Windows.Forms.PictureBox();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.label1 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.downPoint = new System.Windows.Forms.TextBox();
             this.calculateButton = new System.Windows.Forms.Button();
             this.rightPoint = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
@@ -97,8 +95,6 @@
             // splitContainer1.Panel1
             // 
             this.splitContainer1.Panel1.Controls.Add(this.label1);
-            this.splitContainer1.Panel1.Controls.Add(this.label4);
-            this.splitContainer1.Panel1.Controls.Add(this.downPoint);
             this.splitContainer1.Panel1.Controls.Add(this.calculateButton);
             this.splitContainer1.Panel1.Controls.Add(this.rightPoint);
             this.splitContainer1.Panel1.Controls.Add(this.label3);
@@ -122,22 +118,6 @@
             this.label1.Size = new System.Drawing.Size(70, 13);
             this.label1.TabIndex = 16;
             this.label1.Text = "Левая точка";
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(12, 156);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(78, 13);
-            this.label4.TabIndex = 19;
-            this.label4.Text = "Нижняя точка";
-            // 
-            // downPoint
-            // 
-            this.downPoint.Location = new System.Drawing.Point(155, 153);
-            this.downPoint.Name = "downPoint";
-            this.downPoint.Size = new System.Drawing.Size(100, 20);
-            this.downPoint.TabIndex = 15;
             // 
             // calculateButton
             // 
@@ -410,8 +390,6 @@
         private System.Windows.Forms.ToolStripContainer toolStripContainer1;
         private System.Windows.Forms.GroupBox figureGroupBox;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.TextBox downPoint;
         private System.Windows.Forms.Button calculateButton;
         private System.Windows.Forms.TextBox rightPoint;
         private System.Windows.Forms.Label label3;

@@ -7,21 +7,19 @@ namespace monteKarlo_forms
 
     class NonOOP
     {
-        private double radius_;
-        private double circleX_;
-        private double circleY_;
-
         private double k1_;
         private double b1_;
 
         private double k2_;
         private double b2_;
 
+        private double k3_;
+        private double b3_;
+
         private int functionsIsCalculated = 0;
 
         private Point leftPoint_;
         private Point upPoint_;
-        private Point downPoint_;
         private Point rightPoint_;
 
         private double minY_;
@@ -29,18 +27,18 @@ namespace monteKarlo_forms
         private double maxY_;
         private double maxX_;
 
-        public double square_;
+        private double square_;
 
         public ReturnedData doStuff(Point[] withPoints)
         {
-            setStuff(withPoints[0], withPoints[1], withPoints[2], withPoints[3]);
+            setStuff(withPoints[0], withPoints[1], withPoints[2]);
 
             ReturnedData data = new ReturnedData();
 
             Stopwatch watch = new Stopwatch();
             watch.Start();
 
-            var actuallySquare = calculateActualSquare(leftPoint_, upPoint_, downPoint_);
+            var actuallySquare = calculateActualSquare();
             data.actualSquare = actuallySquare;
 
             var number = new Random();
@@ -79,27 +77,26 @@ namespace monteKarlo_forms
         }
 
 
-        private void setStuff(Point leftPoint, Point upPoint, Point rightPoint, Point downPoint)
+        private void setStuff(Point leftPoint, Point upPoint, Point rightPoint)
         {
             leftPoint_ = leftPoint;
             upPoint_ = upPoint;
             rightPoint_ = rightPoint;
-            downPoint_ = downPoint;
 
             setMinsAndMaxs();
 
             calculateSquare();
 
-            calculateCircleCenter(rightPoint_, upPoint_);
             calculateLinearCoeffsFirst(leftPoint_, upPoint_);
-            calculateLinearCoeffsSecond(leftPoint_, downPoint_);
+            calculateLinearCoeffsSecond(upPoint_, rightPoint_);
+            calculateLinearCoeffsThird(leftPoint_, rightPoint_);
         }
 
 
         private void setMinsAndMaxs()
         {
             minX_ = leftPoint_.X;
-            minY_ = downPoint_.Y;
+            minY_ = 0;
             maxX_ = rightPoint_.X;
             maxY_ = upPoint_.Y;
         }
@@ -120,20 +117,16 @@ namespace monteKarlo_forms
                 return false;
             }
 
-            if (newPoint.X < circleX_)
-            {
-                if ((isLowerlinearFunction(newPoint.X, newPoint.Y) == true) &&
-                    (isUpperlinearFunction(newPoint.X, newPoint.Y) == true))
-                    return true;
-                else
-                    return false;
-            }
+            if ((isLowerlinearFunctionFirst(newPoint.X, newPoint.Y) == true) &&
+                (isLowerlinearFunctionSecond(newPoint.X, newPoint.Y) == true) &&
+                (isUpperlinearFunction(newPoint.X, newPoint.Y) == true))
+                return true;
             else
-                return isInsideCircle(newPoint.X, newPoint.Y);
+                return false;
         }
 
 
-        public void calculateLinearCoeffsFirst(Point firstPoint, Point secondPoint)
+        private void calculateLinearCoeffsFirst(Point firstPoint, Point secondPoint)
         {
             k1_ = (secondPoint.Y - firstPoint.Y) / (secondPoint.X - firstPoint.X);
             b1_ = firstPoint.Y - k1_ * firstPoint.X;
@@ -142,7 +135,7 @@ namespace monteKarlo_forms
         }
 
 
-        public void calculateLinearCoeffsSecond(Point firstPoint, Point secondPoint)
+        private void calculateLinearCoeffsSecond(Point firstPoint, Point secondPoint)
         {
             k2_ = (secondPoint.Y - firstPoint.Y) / (secondPoint.X - firstPoint.X);
             b2_ = firstPoint.Y - k2_ * firstPoint.X;
@@ -151,38 +144,36 @@ namespace monteKarlo_forms
         }
 
 
-        private bool isLowerlinearFunction(double x, double y)
+        private void calculateLinearCoeffsThird(Point firstPoint, Point secondPoint)
         {
-            return (y < (k1_ * x + b1_)) ? true : false;
-        }
-
-
-        private bool isUpperlinearFunction(double x, double y)
-        {
-            return (y > (k2_ * x + b2_)) ? true : false;
-        }
-
-
-        public void calculateCircleCenter(Point cPoint, Point dPoint)
-        {
-            circleX_ = dPoint.X;
-            circleY_ = cPoint.Y; 
-            radius_ = cPoint.X - dPoint.X;
+            k3_ = (secondPoint.Y - firstPoint.Y) / (secondPoint.X - firstPoint.X);
+            b3_ = firstPoint.Y - k3_ * firstPoint.X;
 
             functionsIsCalculated++;
         }
 
 
-        private bool isInsideCircle(double x, double y)
+        private bool isLowerlinearFunctionFirst(double x, double y)
         {
-            return ((Math.Sqrt((x - circleX_) * (x - circleX_) + y * y)) <= radius_) ? true : false;
+            return (y < (k1_ * x + b1_)) ? true : false;
         }
 
 
-        public double calculateActualSquare(Point left, Point up, Point down)
+        private bool isLowerlinearFunctionSecond(double x, double y)
         {
-            return (circleX_ - left.X) * (up.Y - down.Y) - ((up.Y - left.Y) * (up.X - left.X) * 0.5) -
-                ((down.X - left.X) * (left.Y - down.Y) * 0.5) + (Math.PI * radius_ * radius_ / 4);
+            return (y < (k2_ * x + b2_)) ? true : false;
+        }
+
+
+        private bool isUpperlinearFunction(double x, double y)
+        {
+            return (y > (k3_ * x + b3_)) ? true : false;
+        }
+
+
+        private double calculateActualSquare()
+        {
+            return (square_ - ((maxY_ - leftPoint_.Y) * (upPoint_.X - minX_) * 0.5) - ((maxX_ - upPoint_.X) * (maxY_ - rightPoint_.Y) * 0.5) - (0.5 * ((leftPoint_.Y - minY_) + (rightPoint_.Y - minY_)) * (maxX_ - minX_)));
 
             //return ((centerCircle_.X - leftDown.X) * centerCircle_.Radius / 2) +
             //       (Math.PI * centerCircle_.Radius * centerCircle_.Radius / 4);

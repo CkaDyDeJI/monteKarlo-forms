@@ -9,7 +9,7 @@ namespace monteKarlo_forms
 
     public partial class Form1 : Form
     {
-        private Point[] withPoints_ = new Point[4];
+        private Point[] withPoints_ = new Point[3];
 
         public Form1()
         {
@@ -27,7 +27,7 @@ namespace monteKarlo_forms
             statusLabel.Text = "Calculating...";
             splitContainer1.Enabled = false;
 
-            //await Task.Delay(1);
+            await Task.Delay(1);
 
             OOP main1 = new OOP(withPoints_);
             outputResult(main1.calculate(), 0);
@@ -128,19 +128,6 @@ namespace monteKarlo_forms
             catch
             {
                 MessageBox.Show("правая точка задана неверна");
-
-                return false;
-            }
-
-            try
-            {
-                temp = downPoint.Text.Replace('.', ',').Split(new char[] { ' ' });
-
-                withPoints_[3] = new Point(ToDouble(temp[0]), ToDouble(temp[1]));
-            }
-            catch
-            {
-                MessageBox.Show("нижняя точка задана неверна");
 
                 return false;
             }

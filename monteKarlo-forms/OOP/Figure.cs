@@ -4,7 +4,6 @@
     {
         public Point leftPoint_ { get; set; }
         public Point upPoint_ { get; set; }
-        public Point downPoint_ { get; set; }
         public Point rightPoint_ { get; set; }
 
         public double minY_ { get; set; }
@@ -15,12 +14,11 @@
         public double square_ { get; set; }
 
 
-        public Figure(Point leftPoint, Point upPoint, Point rightPoint, Point downPoint)
+        public Figure(Point leftPoint, Point upPoint, Point rightPoint)
         {
             leftPoint_ = leftPoint;
             upPoint_ = upPoint;
             rightPoint_ = rightPoint;
-            downPoint_ = downPoint;
 
             setMinsAndMaxs();
 
@@ -31,8 +29,8 @@
         private void setMinsAndMaxs()
         {
             minX_ = leftPoint_.X;
-            minY_ = downPoint_.Y;
             maxX_ = rightPoint_.X;
+            minY_ = 0;
             maxY_ = upPoint_.Y;
         }
 

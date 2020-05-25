@@ -13,6 +13,10 @@
 
         public double square_ { get; set; }
 
+        private LinearFunction firstOne_;
+        private LinearFunction secondOne_;
+        private LinearFunction thirdOne_;
+
 
         public Figure(Point leftPoint, Point upPoint, Point rightPoint)
         {
@@ -23,6 +27,10 @@
             setMinsAndMaxs();
 
             calculateSquare();
+
+            firstOne_ = new LinearFunction (leftPoint_, upPoint_);
+            secondOne_ = new LinearFunction (upPoint_, rightPoint_);
+            thirdOne_ = new LinearFunction (leftPoint_, rightPoint_);
         }
 
 
@@ -38,6 +46,28 @@
         private void calculateSquare()
         {
             square_ = (maxX_ - minX_) * (maxY_ - minY_);
+        }
+
+
+        public bool isInside(Point newPoint)
+        {
+            if ((firstOne_.isInside(newPoint.X, newPoint.Y) == true) &&
+                (secondOne_.isInside(newPoint.X, newPoint.Y) == true) &&
+                (thirdOne_.isInside(newPoint.X, newPoint.Y) == false))
+                return true;
+            else
+                return false;
+        }
+
+
+        public double calculateActualSquare()
+        {
+            return (square_ - ((maxY_ - leftPoint_.Y) * (upPoint_.X - minX_) * 0.5) - ((maxX_ - upPoint_.X) * (maxY_ - rightPoint_.Y) * 0.5) - (0.5 * ((leftPoint_.Y - minY_) + (rightPoint_.Y - minY_)) * (maxX_ - minX_)));
+
+            //return (centerCircle_.X - leftPoint_.X) * (upPoint_.Y - downPoint_.Y) - ((upPoint_.Y - leftPoint_.Y) * (upPoint_.X - leftPoint_.X) * 0.5) - ((downPoint_.X - leftPoint_.X) * (leftPoint_.Y - downPoint_.Y) * 0.5) + (Math.PI * centerCircle_.Radius * centerCircle_.Radius / 4);
+
+            //return ((centerCircle_.X - leftDown.X) * centerCircle_.Radius / 2) +
+            //       (Math.PI * centerCircle_.Radius * centerCircle_.Radius / 4);
         }
     }
 }

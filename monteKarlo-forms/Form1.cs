@@ -68,6 +68,8 @@ namespace monteKarlo_forms
                 currentRow++;
             }
 
+            currentDataGrid.Rows.Add();
+
             //currentDataGrid.Rows.Add();
             // RichTextBox[] textBoxes = new RichTextBox[] {forOOP, forNonOOP};
             //

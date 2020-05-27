@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Diagnostics;
+using System.Windows.Forms;
+
 
 namespace monteKarlo_forms
 {
@@ -36,7 +38,6 @@ namespace monteKarlo_forms
             ReturnedData data = new ReturnedData();
 
             Stopwatch watch = new Stopwatch();
-            watch.Start();
 
             var actuallySquare = calculateActualSquare();
             data.actualSquare = actuallySquare;
@@ -112,7 +113,7 @@ namespace monteKarlo_forms
         {
             if (functionsIsCalculated != 3)
             {
-                Console.WriteLine("stuff is not set!");
+                MessageBox.Show("stuff is not set!");
 
                 return false;
             }

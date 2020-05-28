@@ -55,8 +55,8 @@ namespace monteKarlo_forms
                 insideCounter = 0;
                 for (var j = 0; j < n; j++)
                 {
-                    randomX = minX_ + ToDouble(number.Next(0, 132767)) / 132767 * (maxX_ - minX_); //minX_ * number.Next (ToInt32 ( minX_ ), ToInt32(maxX_));
-                    randomY = minY_ + ToDouble(number.Next(0, 132767)) / 132767 * (maxY_ - minY_); //number.Next (ToInt32 ( minY_ ), ToInt32(maxY_));
+                    randomX = minX_ + ToDouble(number.Next(0, 132767)) / 132767 * (maxX_ - minX_); 
+                    randomY = minY_ + ToDouble(number.Next(0, 132767)) / 132767 * (maxY_ - minY_); 
                     if (isInside(new Point(randomX, randomY)))
                         insideCounter++;
                 }
@@ -175,9 +175,6 @@ namespace monteKarlo_forms
         private double calculateActualSquare()
         {
             return (square_ - ((maxY_ - leftPoint_.Y) * (upPoint_.X - minX_) * 0.5) - ((maxX_ - upPoint_.X) * (maxY_ - rightPoint_.Y) * 0.5) - (0.5 * ((leftPoint_.Y - minY_) + (rightPoint_.Y - minY_)) * (maxX_ - minX_)));
-
-            //return ((centerCircle_.X - leftDown.X) * centerCircle_.Radius / 2) +
-            //       (Math.PI * centerCircle_.Radius * centerCircle_.Radius / 4);
         }
 
     }

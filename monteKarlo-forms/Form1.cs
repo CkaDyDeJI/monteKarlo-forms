@@ -16,7 +16,6 @@ namespace monteKarlo_forms
         public Form1()
         {
             InitializeComponent();
-            drawFigure();
         }
 
 
@@ -69,14 +68,6 @@ namespace monteKarlo_forms
             }
 
             currentDataGrid.Rows.Add();
-        }
-
-
-        private void drawFigure()
-        {
-            var drawing = new Drawing (figurePicture.Width, figurePicture.Height);
-
-            figurePicture.Image = drawing.getBitmap();
         }
 
 

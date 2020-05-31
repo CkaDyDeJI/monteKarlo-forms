@@ -7,8 +7,8 @@ namespace monteKarlo_forms
     class ReturnedData
     {
         public TimeSpan time { get; set; }
-        private List <double> calculatedSquares;// { get; set; }
-        private List <double> accuracies;// { get; set; }
+        private List <double> calculatedSquares;
+        private List <double> accuracies;
         private List <double> numberOfPoints;
         private List <double> numberOfPointsInside;
         private List <TimeSpan> times;

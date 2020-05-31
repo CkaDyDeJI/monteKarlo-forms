@@ -8,14 +8,11 @@ namespace monteKarlo_forms
     class OOP
     {
         private Figure mainFigure_;
-        //private InsertedFigure calculatedFigure_;
 
 
         public OOP (Point[] pointsArray)
         {
             mainFigure_ = new Figure (pointsArray[0], pointsArray[1], pointsArray[2]);
-
-            //calculatedFigure_ = new InsertedFigure (mainFigure_);
         }
 
 
@@ -41,8 +38,8 @@ namespace monteKarlo_forms
                 insideCounter = 0;
                 for (var j = 0; j < n; j++)
                 {
-                    randomX = mainFigure_.minX_ + ToDouble(number.Next(0, 132767)) / 132767 * (mainFigure_.maxX_ - mainFigure_.minX_); //minX_ * number.Next (ToInt32 ( minX_ ), ToInt32(maxX_));
-                    randomY = mainFigure_.minY_ + ToDouble(number.Next(0, 132767)) / 132767 * (mainFigure_.maxY_ - mainFigure_.minY_); //number.Next (ToInt32 ( minY_ ), ToInt32(maxY_));
+                    randomX = mainFigure_.minX_ + ToDouble(number.Next(0, 132767)) / 132767 * (mainFigure_.maxX_ - mainFigure_.minX_);
+                    randomY = mainFigure_.minY_ + ToDouble(number.Next(0, 132767)) / 132767 * (mainFigure_.maxY_ - mainFigure_.minY_);
                     if (mainFigure_.isInside(new Point(randomX, randomY)))
                         insideCounter++;
                 }
@@ -51,7 +48,7 @@ namespace monteKarlo_forms
                 watch.Stop();
 
                 data.addSquare (square);
-                data.addAcc (Math.Abs(square - actualSquare) / actualSquare);
+                data.addAcc (Math.Abs(square - actualSquare) / actualSquare * 100);
                 data.addPoints (n);
                 data.addPointsInside (insideCounter);
                 data.addTime (watch.Elapsed);

@@ -29,50 +29,43 @@ namespace monteKarlo_forms
             await Task.Delay (1);
 
             var main1 = new OOP (withPoints_);
-            outputResult (main1.calculate(), 0);
+            outputResult (main1.calculate());
 
             var main2 = new NonOOP();
-            outputResult (main2.doStuff (withPoints_), 1);
+            main2.doStuff (withPoints_, procedureDataGrid);
 
             splitContainer1.Enabled = true;
             statusLabel.Text = "Done";
         }
 
 
-        private void outputResult (ReturnedData dataForOutput, int textBoxNumber)
+        private void outputResult (ReturnedData dataForOutput)
         {
-            DataGridView currentDataGrid;
-            if (textBoxNumber == 0)
-                currentDataGrid = objectDataGrid;
-            else
-                currentDataGrid = procedureDataGrid;
-
-
             var squares = dataForOutput.CalculatedSquares;
             var accs = dataForOutput.Accuracies;
             var numbOfPoints = dataForOutput.NumberOfPoints;
             var numbOfPointsInside = dataForOutput.NumberOfPointsInside;
             var times = dataForOutput.Times;
 
-            var currentRow = currentDataGrid.RowCount - 1;
+            var currentRow = objectDataGrid.RowCount - 1;
             for (var i = 0; i < squares.Count; i++) {
-                currentDataGrid.Rows.Add();
-                currentDataGrid.Rows[currentRow].Cells[0].Value = numbOfPoints[i];
-                currentDataGrid.Rows[currentRow].Cells[1].Value = numbOfPointsInside[i];
-                currentDataGrid.Rows[currentRow].Cells[2].Value = dataForOutput.actualSquare;
-                currentDataGrid.Rows[currentRow].Cells[3].Value = squares[i];
-                currentDataGrid.Rows[currentRow].Cells[4].Value = accs[i];
-                currentDataGrid.Rows[currentRow].Cells[5].Value = times[i];
+                objectDataGrid.Rows.Add();
+                objectDataGrid.Rows[currentRow].Cells[0].Value = numbOfPoints[i];
+                objectDataGrid.Rows[currentRow].Cells[1].Value = numbOfPointsInside[i];
+                objectDataGrid.Rows[currentRow].Cells[2].Value = dataForOutput.actualSquare;
+                objectDataGrid.Rows[currentRow].Cells[3].Value = squares[i];
+                objectDataGrid.Rows[currentRow].Cells[4].Value = accs[i];
+                objectDataGrid.Rows[currentRow].Cells[5].Value = times[i];
 
                 currentRow++;
             }
-
-            currentDataGrid.Rows.Add();
         }
 
 
         private bool setPoints()
         {
+            bool isCorrect = true;
+            string errorString = "";
             string[] temp;
 
             try {
@@ -81,9 +74,9 @@ namespace monteKarlo_forms
                 withPoints_[0] = new Point (ToDouble (temp[0]), ToDouble (temp[1]));
             }
             catch {
-                MessageBox.Show ("левая точка задана неверна");
+                errorString += "левая точка задана неверна";
 
-                return false;
+                isCorrect = false;
             }
 
             try {
@@ -92,9 +85,9 @@ namespace monteKarlo_forms
                 withPoints_[1] = new Point (ToDouble (temp[0]), ToDouble (temp[1]));
             }
             catch {
-                MessageBox.Show ("верхняя точка задана неверна");
+                errorString += "верхняя точка задана неверна";
 
-                return false;
+                isCorrect = false;
             }
 
             try {
@@ -103,12 +96,37 @@ namespace monteKarlo_forms
                 withPoints_[2] = new Point (ToDouble (temp[0]), ToDouble (temp[1]));
             }
             catch {
-                MessageBox.Show ("правая точка задана неверна");
+                errorString += "правая точка задана неверна";
 
-                return false;
+                isCorrect = false;
             }
 
-            return true;
+            if (isCorrect != false) {
+                if (withPoints_[0].X >= withPoints_[1].X || withPoints_[0].X >= withPoints_[2].X)
+                {
+                    errorString += "координата х точки b должна быть меньше, чем у c и d";
+
+                    isCorrect = false;
+                }
+
+                if (withPoints_[2].X <= withPoints_[1].X)
+                {
+                    errorString += "координата х точки е должна быть меньше чем у d";
+
+                    isCorrect = false;
+                }
+
+                if (withPoints_[1].Y <= withPoints_[0].Y || withPoints_[1].Y <= withPoints_[2].Y) {
+                    errorString += "координата у точки е должна быть больше чем у b и d";
+
+                    isCorrect = false;
+                }
+            }
+
+            if (isCorrect == false)
+                MessageBox.Show (errorString);
+
+            return isCorrect;
         }
     }
 }

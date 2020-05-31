@@ -31,16 +31,16 @@ namespace monteKarlo_forms
 
         private double square_;
 
-        public ReturnedData doStuff(Point[] withPoints)
-        {
-            setStuff(withPoints[0], withPoints[1], withPoints[2]);
+        private DataGridView table;
 
-            ReturnedData data = new ReturnedData();
+        public void doStuff(Point[] withPoints, DataGridView newTable)
+        {
+            table = newTable;
+            setStuff(withPoints[0], withPoints[1], withPoints[2]);
 
             Stopwatch watch = new Stopwatch();
 
             var actuallySquare = calculateActualSquare();
-            data.actualSquare = actuallySquare;
 
             var number = new Random();
             int insideCounter;
@@ -64,17 +64,11 @@ namespace monteKarlo_forms
                 var square = square_ * insideCounter / n;
 
                 watch.Stop();
-                
-                data.addSquare(square);
-                data.addAcc(Math.Abs(square - actuallySquare) / actuallySquare);
-                data.addPoints (n);
-                data.addPointsInside (insideCounter);
-                data.addTime (watch.Elapsed);
+
+                table.Rows.Add (n, insideCounter, actuallySquare, square, Math.Abs (square - actuallySquare) / actuallySquare * 100, watch.Elapsed);
 
                 watch.Reset();
             }
-
-            return data;
         }
 
 

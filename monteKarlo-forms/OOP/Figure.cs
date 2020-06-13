@@ -21,10 +21,10 @@
 
         public Figure(Point[] pointsArray)
         {
-            aPoint_ = pointsArray[0];
-            bPoint_ = pointsArray[1];
-            cPoint_ = pointsArray[2];
-            dPoint_ = pointsArray[4];
+            aPoint_ = pointsArray[3];
+            bPoint_ = pointsArray[0];
+            cPoint_ = pointsArray[1];
+            dPoint_ = pointsArray[2];
 
             setMinsAndMaxs();
 
@@ -51,11 +51,11 @@
         }
 
 
-        public bool isInside(Point newPoint)
+        public bool isInside(double x, double y)
         {
-            if ((bcLine_.isInside(newPoint.X, newPoint.Y) == true) &&
-                (cdLine_.isInside(newPoint.X, newPoint.Y) == true) &&
-                (daLine_.isInside(newPoint.X, newPoint.Y) == false))
+            if ((bcLine_.isInside(x, y) == true) &&
+                (cdLine_.isInside(x, y) == true) &&
+                (daLine_.isInside(x, y) == false))
                 return true;
             else
                 return false;
@@ -64,7 +64,8 @@
 
         public double calculateActualSquare()
         {
-            return (square_ - ((maxY_ - leftPoint_.Y) * (upPoint_.X - minX_) * 0.5) - ((maxX_ - upPoint_.X) * (maxY_ - rightPoint_.Y) * 0.5) - (0.5 * ((leftPoint_.Y - minY_) + (rightPoint_.Y - minY_)) * (maxX_ - minX_)));
+            return square_ - ((maxY_ - bPoint_.Y) * (cPoint_.X - minX_) * 0.5) - ((maxX_ - cPoint_.X) * (maxY_ - dPoint_.Y) * 0.5) - (
+                (dPoint_.Y - minY_) * (maxX_ - minX_) * 0.5);
         }
     }
 }

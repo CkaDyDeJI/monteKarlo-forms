@@ -42,7 +42,7 @@ namespace monteKarlo_forms
                 withPoints_[0] = new Point (ToDouble (temp[0]), ToDouble (temp[1]));
             }
             catch {
-                errorString += "Левая точка (b) задана неверно\n\r";
+                errorString += "B задана неверно\n\r";
 
                 isCorrect = false;
             }
@@ -53,7 +53,7 @@ namespace monteKarlo_forms
                 withPoints_[1] = new Point (ToDouble (temp[0]), ToDouble (temp[1]));
             }
             catch {
-                errorString += "Верхняя точка (c) задана неверно\n\r";
+                errorString += "C задана неверно\n\r";
 
                 isCorrect = false;
             }
@@ -64,7 +64,7 @@ namespace monteKarlo_forms
                 withPoints_[2] = new Point (ToDouble (temp[0]), ToDouble (temp[1]));
             }
             catch {
-                errorString += "Правая точка (d) задана неверно\n\r";
+                errorString += "D задана неверно\n\r";
 
                 isCorrect = false;
             }
@@ -77,7 +77,7 @@ namespace monteKarlo_forms
             }
             catch
             {
-                errorString += "Нижняя точка точка (a) задана неверно\n\r";
+                errorString += "A задана неверно\n\r";
 
                 isCorrect = false;
             }
@@ -85,20 +85,20 @@ namespace monteKarlo_forms
             if (isCorrect != false) {
                 if (withPoints_[0].X >= withPoints_[1].X || withPoints_[0].X >= withPoints_[2].X)
                 {
-                    errorString += "координата х точки b должна быть меньше, чем у c и d\n\r";
+                    errorString += "координата х точки B должна быть меньше, чем у C и D\n\r";
 
                     isCorrect = false;
                 }
 
                 if (withPoints_[2].X <= withPoints_[1].X)
                 {
-                    errorString += "координата х точки е должна быть меньше чем у d\n\r";
+                    errorString += "координата х точки C должна быть меньше чем у D\n\r";
 
                     isCorrect = false;
                 }
 
                 if (withPoints_[1].Y <= withPoints_[0].Y || withPoints_[1].Y <= withPoints_[2].Y) {
-                    errorString += "координата у точки е должна быть больше чем у b и d\n\r";
+                    errorString += "координата у точки C должна быть больше чем у B и D\n\r";
 
                     isCorrect = false;
                 }

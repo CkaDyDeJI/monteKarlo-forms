@@ -38,7 +38,7 @@ namespace monteKarlo_forms
                 {
                     randomX = mainFigure_.minX_ + ToDouble(number.Next(0, 132767)) / 132767 * (mainFigure_.maxX_ - mainFigure_.minX_);
                     randomY = mainFigure_.minY_ + ToDouble(number.Next(0, 132767)) / 132767 * (mainFigure_.maxY_ - mainFigure_.minY_);
-                    if (mainFigure_.isInside(new Point(randomX, randomY)))
+                    if (mainFigure_.isInside(randomX, randomY))
                         insideCounter++;
                 }
 

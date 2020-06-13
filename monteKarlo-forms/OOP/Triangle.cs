@@ -1,6 +1,6 @@
 ﻿namespace monteKarlo_forms
 {
-    class Figure
+    class Triangle
     {
         public Point bPoint_ { get; set; }
         public Point cPoint_ { get; set; }
@@ -18,7 +18,7 @@
         private LinearFunction thirdOne_;
 
 
-        public Figure(Point[] pointsArray)
+        public Triangle(Point[] pointsArray)
         {
             bPoint_ = pointsArray[1];
             cPoint_ = pointsArray[2];

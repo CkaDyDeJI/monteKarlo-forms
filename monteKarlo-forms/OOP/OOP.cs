@@ -5,7 +5,7 @@ namespace monteKarlo_forms
 {
     using static Convert;
 
-    class OOP : Figure
+    class OOP : Triangle
     {
         public OOP (Point[] pointsArray) : base(pointsArray)
         { }

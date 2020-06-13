@@ -102,25 +102,25 @@ namespace monteKarlo_forms
             if (isCorrect != false) {
                 if (withPoints_[1].X >= withPoints_[2].X || withPoints_[2].X <= withPoints_[3].X)
                 {
-                    errorString += "координата х точки C должна быть меньше чем у D и больше чем у B\n\r";
+                    errorString += "Координата х точки C должна быть меньше чем у D и больше чем у B\n\r";
 
                     isCorrect = false;
                 }
 
                 if (withPoints_[2].Y <= withPoints_[1].Y || withPoints_[2].Y <= withPoints_[3].Y) {
-                    errorString += "координата у точки C должна быть больше чем у b и d\n\r";
+                    errorString += "Координата у точки C должна быть больше чем у b и d\n\r";
 
                     isCorrect = false;
                 }
 
                 if (withPoints_[1].X != withPoints_[0].X) {
-                    errorString += "координата x точек A и B должны совпадать\n\r";
+                    errorString += "Координата x точек A и B должны совпадать\n\r";
 
                     isCorrect = false;
                 }
 
                 if (withPoints_[0].Y >= withPoints_[1].Y || withPoints_[0].Y >= withPoints_[3].Y) {
-                    errorString += "координата y точки A должна быть меньше чем у B и D\n\r";
+                    errorString += "Координата y точки A должна быть меньше чем у B и D\n\r";
 
                     isCorrect = false;
                 }
@@ -146,18 +146,18 @@ namespace monteKarlo_forms
 
         private void manualCheck_CheckedChanged(object sender, EventArgs e)
         {
-            bottomPoint.Text = "";
-            leftPoint.Text = "";
-            upPoint.Text = "";
-            rightPoint.Text = "";
+            bottomPoint.Clear();
+            leftPoint.Clear();
+            upPoint.Clear();
+            rightPoint.Clear();
         }
 
         private void clearButton_Click(object sender, EventArgs e)
         {
-            bottomPoint.Text = "";
-            leftPoint.Text = "";
-            upPoint.Text = "";
-            rightPoint.Text = "";
+            bottomPoint.Clear();
+            leftPoint.Clear();
+            upPoint.Clear();
+            rightPoint.Clear();
             objectDataGrid.Rows.Clear();
         }
     }

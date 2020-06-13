@@ -47,7 +47,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="OOP\LinearFunction.cs" />
-    <Compile Include="OOP\Figure.cs" />
+    <Compile Include="OOP\Triangle.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>

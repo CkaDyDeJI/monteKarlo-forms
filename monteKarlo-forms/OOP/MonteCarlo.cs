@@ -9,7 +9,7 @@ namespace monteKarlo_forms
 
     class MonteCarlo
     {
-        private Figure figure;
+        private Figure figure;  //наша фигура
 
 
         public MonteCarlo (Point[] pointsArray)
@@ -20,9 +20,9 @@ namespace monteKarlo_forms
 
         public void calculate(DataGridView table)
         {
-            Stopwatch watch = new Stopwatch();
+            Stopwatch watch = new Stopwatch();  //таймер
 
-            var actualSquare = figure.calculateActualSquare();
+            var actualSquare = figure.calculateActualSquare();  //настоящая площадь
 
             var number = new Random();
             int сounter;
@@ -30,23 +30,23 @@ namespace monteKarlo_forms
             double randomY;
             for (var i = 0; i < 5; i++)
             {
-                watch.Start();
-                double n = Math.Pow(10, i + 3);
+                watch.Start();  //запуска таймера
+                double n = Math.Pow(10, i + 3); //задача общего колва точек от 10^3 до 10^7
 
                 сounter = 0;
                 for (var j = 0; j < n; j++)
                 {
-                    randomX = figure.minX + ToDouble(number.Next(0, 42757)) / 42757 * (figure.maxX - figure.minX);
-                    randomY = figure.minY + ToDouble(number.Next(0, 42757)) / 42757 * (figure.maxY - figure.minY);
-                    if (figure.isInside(randomX, randomY))
+                    randomX = figure.minX + ToDouble(number.Next(0, 42757)) / 42757 * (figure.maxX - figure.minX);  //генерация случайной координаты по оси x
+                    randomY = figure.minY + ToDouble(number.Next(0, 42757)) / 42757 * (figure.maxY - figure.minY);  //генерация случайной координаты по оси y
+                    if (figure.isInside(randomX, randomY))  // проверка внутри ли эта точка
                         сounter++;
                 }
 
-                var square = figure.square * сounter / n;
-                watch.Stop();
+                var square = figure.square * сounter / n;   //вычисление площади по формуле монте карло
+                watch.Stop();   //остановка таймера
 
                 table.Rows.Add (n, сounter, actualSquare, square,
-                    Math.Round (Math.Abs (square - actualSquare) / actualSquare * 100, 2), watch.ElapsedMilliseconds);
+                    Math.Round (Math.Abs (square - actualSquare) / actualSquare * 100, 2), watch.ElapsedMilliseconds);  //добавление всех жданных в таблицу
 
                 watch.Reset();
             }

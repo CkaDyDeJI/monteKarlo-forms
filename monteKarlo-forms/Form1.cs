@@ -18,22 +18,22 @@ namespace monteKarlo_forms
         }
 
 
-        private void calculateButton_Click (object sender, EventArgs e)
+        private void calculateButton_Click (object sender, EventArgs e) //при нажатии на кнопку проверять правильно ли введены точки
         {
             if (manualCheck.Checked == true) {
                 if (setPoints() == false) return;
             }
 
-            var main1 = new MonteCarlo (mainPoints);
-            main1.calculate(objectDataGrid);
+            var main1 = new MonteCarlo (mainPoints);    // и запускать вычисление площади методом мк
+            main1.calculate(dataGrid);
         }
 
 
-        private bool setPoints()
+        private bool setPoints()    //проверка и установка правильно введенности точек
         {
             string[] temp;
 
-            try {
+            try {   //для точки b
                 temp = leftPoint.Text.Replace ('.', ',').Split (' ');
 
                 mainPoints[0] = new Point (ToDouble (temp[0]), ToDouble (temp[1]));
@@ -44,7 +44,7 @@ namespace monteKarlo_forms
                 return false;
             }
 
-            try {
+            try {   //с
                 temp = upPoint.Text.Replace ('.', ',').Split (' ');
 
                 mainPoints[1] = new Point (ToDouble (temp[0]), ToDouble (temp[1]));
@@ -55,7 +55,7 @@ namespace monteKarlo_forms
                 return false;
             }
 
-            try {
+            try {   //d
                 temp = rightPoint.Text.Replace ('.', ',').Split (' ');
 
                 mainPoints[2] = new Point (ToDouble (temp[0]), ToDouble (temp[1]));
@@ -67,7 +67,7 @@ namespace monteKarlo_forms
             }
 
             try
-            {
+            {   //a
                 temp = bottomText.Text.Replace('.', ',').Split(' ');
 
                 mainPoints[3] = new Point(ToDouble(temp[0]), ToDouble(temp[1]));
@@ -80,7 +80,7 @@ namespace monteKarlo_forms
             }
 
 
-            if (mainPoints[0].X >= mainPoints[1].X || mainPoints[0].X >= mainPoints[2].X)
+            if (mainPoints[0].X >= mainPoints[1].X || mainPoints[0].X >= mainPoints[2].X)   //проверка правильно расположенности точек относительно друг друга
             {
                 MessageBox.Show("координата х точки B должна быть меньше, чем у C и D\n\r");
 
@@ -112,10 +112,10 @@ namespace monteKarlo_forms
                 return false;
             }
 
-            return true;
+            return true;    //если введено все нормально, тогда продолжать вычисления
         }
 
-        private void controlCheck_CheckedChanged(object sender, EventArgs e)
+        private void controlCheck_CheckedChanged(object sender, EventArgs e)    //при выборе контрольных значений автоматически задавать значения точкам
         {
             bottomText.Text = "5 1";
             leftPoint.Text = "5 18";
@@ -127,7 +127,7 @@ namespace monteKarlo_forms
             mainPoints[3] = new Point(5, 1);
         }
 
-        private void manualCheck_CheckedChanged(object sender, EventArgs e)
+        private void manualCheck_CheckedChanged(object sender, EventArgs e) //при ручном очищать все поля
         {
             bottomText.Text = "";
             leftPoint.Text = "";
@@ -135,13 +135,13 @@ namespace monteKarlo_forms
             rightPoint.Text = "";
         }
 
-        private void clearButton_Click(object sender, EventArgs e)
+        private void clearButton_Click(object sender, EventArgs e)  //очистка всех полей и таблицы
         {
             bottomText.Text = "";
             leftPoint.Text = "";
             upPoint.Text = "";
             rightPoint.Text = "";
-            objectDataGrid.Rows.Clear();
+            dataGrid.Rows.Clear();
         }
     }
 }

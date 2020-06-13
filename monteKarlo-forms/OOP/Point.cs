@@ -2,7 +2,7 @@
 {
     class Point
     {
-        private double x;
+        private double x;   //точки поинта
         private double y;
 
 

@@ -12,7 +12,7 @@ namespace monteKarlo_forms
 
         public OOP (Point[] pointsArray)
         {
-            mainFigure_ = new Figure (pointsArray[0], pointsArray[1], pointsArray[2]);
+            mainFigure_ = new Figure (pointsArray);
         }
 
 
@@ -21,7 +21,6 @@ namespace monteKarlo_forms
             ReturnedData data = new ReturnedData();
 
             Stopwatch watch = new Stopwatch();
-            watch.Start();
 
             var actualSquare = mainFigure_.calculateActualSquare();
             data.actualSquare = actualSquare;
@@ -48,10 +47,10 @@ namespace monteKarlo_forms
                 watch.Stop();
 
                 data.addSquare (square);
-                data.addAcc (Math.Abs(square - actualSquare) / actualSquare * 100);
+                data.addAcc (Math.Round(Math.Abs (square - actualSquare) / actualSquare * 100, 2));
                 data.addPoints (n);
                 data.addPointsInside (insideCounter);
-                data.addTime (watch.Elapsed);
+                data.addTime (watch.ElapsedMilliseconds);
 
                 watch.Reset();
             }

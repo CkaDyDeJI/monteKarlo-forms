@@ -11,7 +11,7 @@ namespace monteKarlo_forms
         private List <double> accuracies;
         private List <double> numberOfPoints;
         private List <double> numberOfPointsInside;
-        private List <TimeSpan> times;
+        private List <long> times;
         public double actualSquare { get; set; }
 
         
@@ -23,7 +23,7 @@ namespace monteKarlo_forms
             accuracies = new List <double>();
             numberOfPoints = new List <double>();
             numberOfPointsInside = new List <double>();
-            times = new List <TimeSpan>();
+            times = new List <long>();
         }
 
 
@@ -51,7 +51,7 @@ namespace monteKarlo_forms
         }
 
 
-        public void addTime (TimeSpan time)
+        public void addTime (long time)
         {
             times.Add (time);
         }
@@ -69,6 +69,6 @@ namespace monteKarlo_forms
         public List<double> NumberOfPointsInside => numberOfPointsInside;
 
 
-        public List <TimeSpan> Times => times;
+        public List <long> Times => times;
     }
 }

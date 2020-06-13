@@ -19,7 +19,6 @@
             set => y_ = value;
         }
 
-
         public Point(double newX, double newY)
         {
             x_ = newX;

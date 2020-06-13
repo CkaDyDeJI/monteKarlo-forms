@@ -18,13 +18,13 @@
         private LinearFunction thirdOne_;
 
 
-        public Figure(Point leftPoint, Point upPoint, Point rightPoint)
+        public Figure(Point[] pointsArray)
         {
-            leftPoint_ = leftPoint;
-            upPoint_ = upPoint;
-            rightPoint_ = rightPoint;
+            leftPoint_ = pointsArray[0];
+            upPoint_ = pointsArray[1];
+            rightPoint_ = pointsArray[2];
 
-            setMinsAndMaxs();
+            setMinsAndMaxs(pointsArray[3]);
 
             calculateSquare();
 
@@ -34,11 +34,11 @@
         }
 
 
-        private void setMinsAndMaxs()
+        private void setMinsAndMaxs(Point bottomPoint)
         {
             minX_ = leftPoint_.X;
             maxX_ = rightPoint_.X;
-            minY_ = 0;
+            minY_ = bottomPoint.Y;
             maxY_ = upPoint_.Y;
         }
 

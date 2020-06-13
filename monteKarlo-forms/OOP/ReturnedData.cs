@@ -6,7 +6,6 @@ namespace monteKarlo_forms
 {
     class ReturnedData
     {
-        public TimeSpan time { get; set; }
         private List <double> calculatedSquares;
         private List <double> accuracies;
         private List <double> numberOfPoints;
@@ -27,48 +26,25 @@ namespace monteKarlo_forms
         }
 
 
-        public void addSquare (double newSquare)
+        public void addToAll (double n, double insideN, double actualSquare, double square, double accurs, long time)
         {
-            calculatedSquares.Add (newSquare);
-        }
-
-
-        public void addAcc (double newAcc)
-        {
-            accuracies.Add (newAcc);
-        }
-
-
-        public void addPoints (double number)
-        {
-            numberOfPoints.Add (number);
-        }
-
-
-        public void addPointsInside (double number)
-        {
-            numberOfPointsInside.Add (number);
-        }
-
-
-        public void addTime (long time)
-        {
+            calculatedSquares.Add (square);
+            accuracies.Add (accurs);
+            numberOfPoints.Add (n);
+            numberOfPointsInside.Add (insideN);
             times.Add (time);
         }
 
 
-        public List <double> CalculatedSquares => calculatedSquares;
+        public Object[] returnAll(int i)
+        {
+            return new object[6] {numberOfPoints[i], numberOfPointsInside[i], actualSquare, calculatedSquares[i], accuracies[i], times[i]};
+        }
 
 
-        public List<double> Accuracies => accuracies;
-
-
-        public List <double> NumberOfPoints => numberOfPoints;
-
-
-        public List<double> NumberOfPointsInside => numberOfPointsInside;
-
-
-        public List <long> Times => times;
+        public int Count
+        {
+            get { return calculatedSquares.Count; }
+        }
     }
 }

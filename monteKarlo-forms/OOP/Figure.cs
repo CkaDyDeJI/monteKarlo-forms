@@ -2,9 +2,9 @@
 {
     class Figure
     {
-        public Point leftPoint_ { get; set; }
-        public Point upPoint_ { get; set; }
-        public Point rightPoint_ { get; set; }
+        public Point bPoint_ { get; set; }
+        public Point cPoint_ { get; set; }
+        public Point dPoint_ { get; set; }
 
         public double minY_ { get; set; }
         public double minX_ { get; set; }
@@ -20,26 +20,26 @@
 
         public Figure(Point[] pointsArray)
         {
-            leftPoint_ = pointsArray[0];
-            upPoint_ = pointsArray[1];
-            rightPoint_ = pointsArray[2];
+            bPoint_ = pointsArray[0];
+            cPoint_ = pointsArray[1];
+            dPoint_ = pointsArray[2];
 
             setMinsAndMaxs(pointsArray[3]);
 
             calculateSquare();
 
-            firstOne_ = new LinearFunction (leftPoint_, upPoint_);
-            secondOne_ = new LinearFunction (upPoint_, rightPoint_);
-            thirdOne_ = new LinearFunction (leftPoint_, rightPoint_);
+            firstOne_ = new LinearFunction (bPoint_, cPoint_);
+            secondOne_ = new LinearFunction (cPoint_, dPoint_);
+            thirdOne_ = new LinearFunction (bPoint_, dPoint_);
         }
 
 
         private void setMinsAndMaxs(Point bottomPoint)
         {
-            minX_ = leftPoint_.X;
-            maxX_ = rightPoint_.X;
+            minX_ = bPoint_.X;
+            maxX_ = dPoint_.X;
             minY_ = bottomPoint.Y;
-            maxY_ = upPoint_.Y;
+            maxY_ = cPoint_.Y;
         }
 
 
@@ -62,7 +62,7 @@
 
         public double calculateActualSquare()
         {
-            return (square_ - ((maxY_ - leftPoint_.Y) * (upPoint_.X - minX_) * 0.5) - ((maxX_ - upPoint_.X) * (maxY_ - rightPoint_.Y) * 0.5) - (0.5 * ((leftPoint_.Y - minY_) + (rightPoint_.Y - minY_)) * (maxX_ - minX_)));
+            return (square_ - ((maxY_ - bPoint_.Y) * (cPoint_.X - minX_) * 0.5) - ((maxX_ - cPoint_.X) * (maxY_ - dPoint_.Y) * 0.5) - (0.5 * ((bPoint_.Y - minY_) + (dPoint_.Y - minY_)) * (maxX_ - minX_)));
         }
     }
 }

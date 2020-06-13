@@ -25,39 +25,8 @@ namespace monteKarlo_forms
                 if (setPoints() == false) return;
             }
 
-            statusLabel.Text = "Calculating...";
-            splitContainer1.Enabled = false;
-
-            await Task.Delay (1);
-
-            var main1 = new OOP (withPoints_);
-            outputResult (main1.calculate());
-
-            splitContainer1.Enabled = true;
-            statusLabel.Text = "Done";
-        }
-
-
-        private void outputResult (ReturnedData dataForOutput)
-        {
-            var squares = dataForOutput.CalculatedSquares;
-            var accs = dataForOutput.Accuracies;
-            var numbOfPoints = dataForOutput.NumberOfPoints;
-            var numbOfPointsInside = dataForOutput.NumberOfPointsInside;
-            var times = dataForOutput.Times;
-
-            var currentRow = objectDataGrid.RowCount - 1;
-            for (var i = 0; i < squares.Count; i++) {
-                objectDataGrid.Rows.Add();
-                objectDataGrid.Rows[currentRow].Cells[0].Value = numbOfPoints[i];
-                objectDataGrid.Rows[currentRow].Cells[1].Value = numbOfPointsInside[i];
-                objectDataGrid.Rows[currentRow].Cells[2].Value = dataForOutput.actualSquare;
-                objectDataGrid.Rows[currentRow].Cells[3].Value = squares[i];
-                objectDataGrid.Rows[currentRow].Cells[4].Value = accs[i];
-                objectDataGrid.Rows[currentRow].Cells[5].Value = times[i];
-
-                currentRow++;
-            }
+            var main1 = new MonteCarlo (withPoints_);
+            main1.calculate(objectDataGrid);
         }
 
 

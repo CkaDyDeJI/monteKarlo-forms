@@ -30,6 +30,8 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
+            this.aLabel = new System.Windows.Forms.Label();
+            this.bottomText = new System.Windows.Forms.TextBox();
             this.clearButton = new System.Windows.Forms.Button();
             this.controlCheck = new System.Windows.Forms.RadioButton();
             this.manualCheck = new System.Windows.Forms.RadioButton();
@@ -50,11 +52,7 @@
             this.MKSquare = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.accura = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.timeColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.statusStrip1 = new System.Windows.Forms.StatusStrip();
-            this.statusLabel = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripContainer1 = new System.Windows.Forms.ToolStripContainer();
-            this.bottomText = new System.Windows.Forms.TextBox();
-            this.aLabel = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -63,8 +61,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.figurePicture)).BeginInit();
             this.groupBoxOOP.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.objectDataGrid)).BeginInit();
-            this.statusStrip1.SuspendLayout();
-            this.toolStripContainer1.BottomToolStripPanel.SuspendLayout();
             this.toolStripContainer1.ContentPanel.SuspendLayout();
             this.toolStripContainer1.SuspendLayout();
             this.SuspendLayout();
@@ -95,9 +91,25 @@
             // splitContainer1.Panel2
             // 
             this.splitContainer1.Panel2.Controls.Add(this.groupBoxOOP);
-            this.splitContainer1.Size = new System.Drawing.Size(1143, 565);
-            this.splitContainer1.SplitterDistance = 186;
+            this.splitContainer1.Size = new System.Drawing.Size(1143, 612);
+            this.splitContainer1.SplitterDistance = 201;
             this.splitContainer1.TabIndex = 10;
+            // 
+            // aLabel
+            // 
+            this.aLabel.AutoSize = true;
+            this.aLabel.Location = new System.Drawing.Point(49, 27);
+            this.aLabel.Name = "aLabel";
+            this.aLabel.Size = new System.Drawing.Size(93, 13);
+            this.aLabel.TabIndex = 23;
+            this.aLabel.Text = "Нижняя точка (a)";
+            // 
+            // bottomText
+            // 
+            this.bottomText.Location = new System.Drawing.Point(155, 24);
+            this.bottomText.Name = "bottomText";
+            this.bottomText.Size = new System.Drawing.Size(100, 20);
+            this.bottomText.TabIndex = 22;
             // 
             // clearButton
             // 
@@ -219,7 +231,7 @@
             this.groupBoxOOP.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBoxOOP.Location = new System.Drawing.Point(0, 0);
             this.groupBoxOOP.Name = "groupBoxOOP";
-            this.groupBoxOOP.Size = new System.Drawing.Size(1143, 375);
+            this.groupBoxOOP.Size = new System.Drawing.Size(1143, 407);
             this.groupBoxOOP.TabIndex = 1;
             this.groupBoxOOP.TabStop = false;
             this.groupBoxOOP.Text = "ООП";
@@ -239,7 +251,7 @@
             this.objectDataGrid.Location = new System.Drawing.Point(3, 16);
             this.objectDataGrid.Name = "objectDataGrid";
             this.objectDataGrid.RowHeadersVisible = false;
-            this.objectDataGrid.Size = new System.Drawing.Size(1137, 356);
+            this.objectDataGrid.Size = new System.Drawing.Size(1137, 388);
             this.objectDataGrid.TabIndex = 1;
             // 
             // numberOfDots
@@ -272,56 +284,19 @@
             this.timeColumn.HeaderText = "Время работы, мс";
             this.timeColumn.Name = "timeColumn";
             // 
-            // statusStrip1
-            // 
-            this.statusStrip1.Dock = System.Windows.Forms.DockStyle.None;
-            this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.statusLabel});
-            this.statusStrip1.Location = new System.Drawing.Point(0, 0);
-            this.statusStrip1.Name = "statusStrip1";
-            this.statusStrip1.Size = new System.Drawing.Size(1143, 22);
-            this.statusStrip1.TabIndex = 11;
-            this.statusStrip1.Text = "statusStrip1";
-            // 
-            // statusLabel
-            // 
-            this.statusLabel.Name = "statusLabel";
-            this.statusLabel.Size = new System.Drawing.Size(39, 17);
-            this.statusLabel.Text = "Ready";
-            // 
             // toolStripContainer1
             // 
-            // 
-            // toolStripContainer1.BottomToolStripPanel
-            // 
-            this.toolStripContainer1.BottomToolStripPanel.Controls.Add(this.statusStrip1);
             // 
             // toolStripContainer1.ContentPanel
             // 
             this.toolStripContainer1.ContentPanel.Controls.Add(this.splitContainer1);
-            this.toolStripContainer1.ContentPanel.Size = new System.Drawing.Size(1143, 565);
+            this.toolStripContainer1.ContentPanel.Size = new System.Drawing.Size(1143, 612);
             this.toolStripContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.toolStripContainer1.Location = new System.Drawing.Point(0, 0);
             this.toolStripContainer1.Name = "toolStripContainer1";
             this.toolStripContainer1.Size = new System.Drawing.Size(1143, 612);
             this.toolStripContainer1.TabIndex = 12;
             this.toolStripContainer1.Text = "toolStripContainer1";
-            // 
-            // bottomText
-            // 
-            this.bottomText.Location = new System.Drawing.Point(155, 24);
-            this.bottomText.Name = "bottomText";
-            this.bottomText.Size = new System.Drawing.Size(100, 20);
-            this.bottomText.TabIndex = 22;
-            // 
-            // aLabel
-            // 
-            this.aLabel.AutoSize = true;
-            this.aLabel.Location = new System.Drawing.Point(49, 27);
-            this.aLabel.Name = "aLabel";
-            this.aLabel.Size = new System.Drawing.Size(93, 13);
-            this.aLabel.TabIndex = 23;
-            this.aLabel.Text = "Нижняя точка (a)";
             // 
             // Form1
             // 
@@ -340,10 +315,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.figurePicture)).EndInit();
             this.groupBoxOOP.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.objectDataGrid)).EndInit();
-            this.statusStrip1.ResumeLayout(false);
-            this.statusStrip1.PerformLayout();
-            this.toolStripContainer1.BottomToolStripPanel.ResumeLayout(false);
-            this.toolStripContainer1.BottomToolStripPanel.PerformLayout();
             this.toolStripContainer1.ContentPanel.ResumeLayout(false);
             this.toolStripContainer1.ResumeLayout(false);
             this.toolStripContainer1.PerformLayout();
@@ -353,8 +324,6 @@
 
         #endregion
         private System.Windows.Forms.SplitContainer splitContainer1;
-        private System.Windows.Forms.StatusStrip statusStrip1;
-        private System.Windows.Forms.ToolStripStatusLabel statusLabel;
         private System.Windows.Forms.ToolStripContainer toolStripContainer1;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button calculateButton;

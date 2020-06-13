@@ -1,29 +1,28 @@
 ﻿using System;
 using System.Diagnostics;
+using System.Windows.Forms;
+
 
 namespace monteKarlo_forms
 {
     using static Convert;
 
-    class OOP
+    class MonteCarlo
     {
         private Figure mainFigure_;
 
 
-        public OOP (Point[] pointsArray)
+        public MonteCarlo (Point[] pointsArray)
         {
             mainFigure_ = new Figure (pointsArray);
         }
 
 
-        public ReturnedData calculate()
+        public void calculate(DataGridView table)
         {
-            ReturnedData data = new ReturnedData();
-
             Stopwatch watch = new Stopwatch();
 
             var actualSquare = mainFigure_.calculateActualSquare();
-            data.actualSquare = actualSquare;
 
             var number = new Random();
             int insideCounter;
@@ -46,16 +45,11 @@ namespace monteKarlo_forms
                 var square = mainFigure_.square_ * insideCounter / n;
                 watch.Stop();
 
-                data.addSquare (square);
-                data.addAcc (Math.Round(Math.Abs (square - actualSquare) / actualSquare * 100, 2));
-                data.addPoints (n);
-                data.addPointsInside (insideCounter);
-                data.addTime (watch.ElapsedMilliseconds);
+                table.Rows.Add (n, insideCounter, actualSquare, square,
+                    Math.Round (Math.Abs (square - actualSquare) / actualSquare * 100, 2), watch.ElapsedMilliseconds);
 
                 watch.Reset();
             }
-
-            return data;
         }
     }
 }

@@ -2,9 +2,10 @@
 {
     class Figure
     {
-        public Point leftPoint_ { get; set; }
-        public Point upPoint_ { get; set; }
-        public Point rightPoint_ { get; set; }
+        public Point aPoint_ { get; set; }
+        public Point bPoint_ { get; set; }
+        public Point cPoint_ { get; set; }
+        public Point dPoint_ { get; set; }
 
         public double minY_ { get; set; }
         public double minX_ { get; set; }
@@ -13,33 +14,34 @@
 
         public double square_ { get; set; }
 
-        private LinearFunction firstOne_;
-        private LinearFunction secondOne_;
-        private LinearFunction thirdOne_;
+        private LinearFunction bcLine_;
+        private LinearFunction cdLine_;
+        private LinearFunction daLine_;
 
 
         public Figure(Point[] pointsArray)
         {
-            leftPoint_ = pointsArray[0];
-            upPoint_ = pointsArray[1];
-            rightPoint_ = pointsArray[2];
+            aPoint_ = pointsArray[0];
+            bPoint_ = pointsArray[1];
+            cPoint_ = pointsArray[2];
+            dPoint_ = pointsArray[4];
 
-            setMinsAndMaxs(pointsArray[3]);
+            setMinsAndMaxs();
 
             calculateSquare();
 
-            firstOne_ = new LinearFunction (leftPoint_, upPoint_);
-            secondOne_ = new LinearFunction (upPoint_, rightPoint_);
-            thirdOne_ = new LinearFunction (leftPoint_, rightPoint_);
+            bcLine_ = new LinearFunction (bPoint_, cPoint_);
+            cdLine_ = new LinearFunction (cPoint_, dPoint_);
+            daLine_ = new LinearFunction (dPoint_, aPoint_);
         }
 
 
-        private void setMinsAndMaxs(Point bottomPoint)
+        private void setMinsAndMaxs()
         {
-            minX_ = leftPoint_.X;
-            maxX_ = rightPoint_.X;
-            minY_ = bottomPoint.Y;
-            maxY_ = upPoint_.Y;
+            minX_ = aPoint_.X;
+            maxX_ = dPoint_.X;
+            minY_ = aPoint_.Y;
+            maxY_ = cPoint_.Y;
         }
 
 
@@ -51,9 +53,9 @@
 
         public bool isInside(Point newPoint)
         {
-            if ((firstOne_.isInside(newPoint.X, newPoint.Y) == true) &&
-                (secondOne_.isInside(newPoint.X, newPoint.Y) == true) &&
-                (thirdOne_.isInside(newPoint.X, newPoint.Y) == false))
+            if ((bcLine_.isInside(newPoint.X, newPoint.Y) == true) &&
+                (cdLine_.isInside(newPoint.X, newPoint.Y) == true) &&
+                (daLine_.isInside(newPoint.X, newPoint.Y) == false))
                 return true;
             else
                 return false;

@@ -52,13 +52,26 @@ namespace monteKarlo_forms
             string errorString = "";
             string[] temp;
 
+            try
+            {
+                temp = rightPoint.Text.Replace('.', ',').Split(' ');
+
+                withPoints_[0] = new Point(ToDouble(temp[0]), ToDouble(temp[1]));
+            }
+            catch
+            {
+                errorString += "Нижняя точка точка (A) задана неверно\n\r";
+
+                isCorrect = false;
+            }
+
             try {
                 temp = leftPoint.Text.Replace ('.', ',').Split (' ');
 
-                withPoints_[0] = new Point (ToDouble (temp[0]), ToDouble (temp[1]));
+                withPoints_[1] = new Point (ToDouble (temp[0]), ToDouble (temp[1]));
             }
             catch {
-                errorString += "Левая точка (b) задана неверно\n\r";
+                errorString += "Левая точка (B) задана неверно\n\r";
 
                 isCorrect = false;
             }
@@ -66,10 +79,10 @@ namespace monteKarlo_forms
             try {
                 temp = upPoint.Text.Replace ('.', ',').Split (' ');
 
-                withPoints_[1] = new Point (ToDouble (temp[0]), ToDouble (temp[1]));
+                withPoints_[2] = new Point (ToDouble (temp[0]), ToDouble (temp[1]));
             }
             catch {
-                errorString += "Верхняя точка (c) задана неверно\n\r";
+                errorString += "Верхняя точка (C) задана неверно\n\r";
 
                 isCorrect = false;
             }
@@ -77,55 +90,36 @@ namespace monteKarlo_forms
             try {
                 temp = rightPoint.Text.Replace ('.', ',').Split (' ');
 
-                withPoints_[2] = new Point (ToDouble (temp[0]), ToDouble (temp[1]));
+                withPoints_[3] = new Point (ToDouble (temp[0]), ToDouble (temp[1]));
             }
             catch {
-                errorString += "Правая точка (d) задана неверно\n\r";
+                errorString += "Правая точка (D) задана неверно\n\r";
 
                 isCorrect = false;
             }
-
-            try
-            {
-                temp = rightPoint.Text.Replace('.', ',').Split(' ');
-
-                withPoints_[3] = new Point(ToDouble(temp[0]), ToDouble(temp[1]));
-            }
-            catch
-            {
-                errorString += "Нижняя точка точка (a) задана неверно\n\r";
-
-                isCorrect = false;
-            }
+            
 
             if (isCorrect != false) {
-                if (withPoints_[0].X >= withPoints_[1].X || withPoints_[0].X >= withPoints_[2].X)
+                if (withPoints_[1].X >= withPoints_[2].X || withPoints_[2].X <= withPoints_[3].X)
                 {
-                    errorString += "координата х точки b должна быть меньше, чем у c и d\n\r";
+                    errorString += "координата х точки C должна быть меньше чем у D и больше чем у B\n\r";
 
                     isCorrect = false;
                 }
 
-                if (withPoints_[2].X <= withPoints_[1].X)
-                {
-                    errorString += "координата х точки е должна быть меньше чем у d\n\r";
+                if (withPoints_[2].Y <= withPoints_[1].Y || withPoints_[2].Y <= withPoints_[3].Y) {
+                    errorString += "координата у точки C должна быть больше чем у b и d\n\r";
 
                     isCorrect = false;
                 }
 
-                if (withPoints_[1].Y <= withPoints_[0].Y || withPoints_[1].Y <= withPoints_[2].Y) {
-                    errorString += "координата у точки е должна быть больше чем у b и d\n\r";
-
-                    isCorrect = false;
-                }
-
-                if (withPoints_[3].X != withPoints_[0].X) {
+                if (withPoints_[1].X != withPoints_[0].X) {
                     errorString += "координата x точек A и B должны совпадать\n\r";
 
                     isCorrect = false;
                 }
 
-                if (withPoints_[3].Y >= withPoints_[0].Y || withPoints_[3].Y >= withPoints_[2].Y) {
+                if (withPoints_[0].Y >= withPoints_[1].Y || withPoints_[0].Y >= withPoints_[3].Y) {
                     errorString += "координата y точки A должна быть меньше чем у B и D\n\r";
 
                     isCorrect = false;
@@ -144,10 +138,10 @@ namespace monteKarlo_forms
             leftPoint.Text = "3 17";
             upPoint.Text = "13 20";
             rightPoint.Text = "23 15";
-            withPoints_[0] = new Point (3, 17);
-            withPoints_[1] = new Point(13, 20);
-            withPoints_[2] = new Point(23, 15);
-            withPoints_[3] = new Point(3, 0);
+            withPoints_[0] = new Point(3, 0);
+            withPoints_[1] = new Point (3, 17);
+            withPoints_[2] = new Point(13, 20);
+            withPoints_[3] = new Point(23, 15);
         }
 
         private void manualCheck_CheckedChanged(object sender, EventArgs e)

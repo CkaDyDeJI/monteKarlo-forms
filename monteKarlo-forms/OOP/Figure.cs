@@ -20,11 +20,11 @@
 
         public Figure(Point[] pointsArray)
         {
-            bPoint_ = pointsArray[0];
-            cPoint_ = pointsArray[1];
-            dPoint_ = pointsArray[2];
+            bPoint_ = pointsArray[1];
+            cPoint_ = pointsArray[2];
+            dPoint_ = pointsArray[3];
 
-            setMinsAndMaxs(pointsArray[3]);
+            setMinsAndMaxs(pointsArray[0]);
 
             calculateSquare();
 

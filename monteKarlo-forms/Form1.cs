@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 
@@ -10,7 +9,7 @@ namespace monteKarlo_forms
 
     public partial class Form1 : Form
     {
-        private readonly Point[] withPoints_ = new Point[4];
+        private readonly Point[] mainPoints = new Point[4];
 
 
         public Form1()
@@ -19,119 +18,113 @@ namespace monteKarlo_forms
         }
 
 
-        private async void calculateButton_Click (object sender, EventArgs e)
+        private void calculateButton_Click (object sender, EventArgs e)
         {
             if (manualCheck.Checked == true) {
                 if (setPoints() == false) return;
             }
 
-            var main1 = new MonteCarlo (withPoints_);
+            var main1 = new MonteCarlo (mainPoints);
             main1.calculate(objectDataGrid);
         }
 
 
         private bool setPoints()
         {
-            bool isCorrect = true;
-            string errorString = "";
             string[] temp;
 
             try {
                 temp = leftPoint.Text.Replace ('.', ',').Split (' ');
 
-                withPoints_[0] = new Point (ToDouble (temp[0]), ToDouble (temp[1]));
+                mainPoints[0] = new Point (ToDouble (temp[0]), ToDouble (temp[1]));
             }
             catch {
-                errorString += "B задана неверно\n\r";
+                MessageBox.Show("B задана неверно\n\r");
 
-                isCorrect = false;
+                return false;
             }
 
             try {
                 temp = upPoint.Text.Replace ('.', ',').Split (' ');
 
-                withPoints_[1] = new Point (ToDouble (temp[0]), ToDouble (temp[1]));
+                mainPoints[1] = new Point (ToDouble (temp[0]), ToDouble (temp[1]));
             }
             catch {
-                errorString += "C задана неверно\n\r";
+                MessageBox.Show("C задана неверно\n\r");
 
-                isCorrect = false;
+                return false;
             }
 
             try {
                 temp = rightPoint.Text.Replace ('.', ',').Split (' ');
 
-                withPoints_[2] = new Point (ToDouble (temp[0]), ToDouble (temp[1]));
+                mainPoints[2] = new Point (ToDouble (temp[0]), ToDouble (temp[1]));
             }
             catch {
-                errorString += "D задана неверно\n\r";
+                MessageBox.Show("D задана неверно\n\r");
 
-                isCorrect = false;
+                return false;
             }
 
             try
             {
-                temp = rightPoint.Text.Replace('.', ',').Split(' ');
+                temp = bottomText.Text.Replace('.', ',').Split(' ');
 
-                withPoints_[3] = new Point(ToDouble(temp[0]), ToDouble(temp[1]));
+                mainPoints[3] = new Point(ToDouble(temp[0]), ToDouble(temp[1]));
             }
             catch
             {
-                errorString += "A задана неверно\n\r";
+                MessageBox.Show("A задана неверно\n\r");
 
-                isCorrect = false;
+                return false;
             }
 
-            if (isCorrect != false) {
-                if (withPoints_[0].X >= withPoints_[1].X || withPoints_[0].X >= withPoints_[2].X)
-                {
-                    errorString += "координата х точки B должна быть меньше, чем у C и D\n\r";
 
-                    isCorrect = false;
-                }
+            if (mainPoints[0].X >= mainPoints[1].X || mainPoints[0].X >= mainPoints[2].X)
+            {
+                MessageBox.Show("координата х точки B должна быть меньше, чем у C и D\n\r");
 
-                if (withPoints_[2].X <= withPoints_[1].X)
-                {
-                    errorString += "координата х точки C должна быть меньше чем у D\n\r";
-
-                    isCorrect = false;
-                }
-
-                if (withPoints_[1].Y <= withPoints_[0].Y || withPoints_[1].Y <= withPoints_[2].Y) {
-                    errorString += "координата у точки C должна быть больше чем у B и D\n\r";
-
-                    isCorrect = false;
-                }
-
-                if (withPoints_[3].X != withPoints_[0].X) {
-                    errorString += "координата x точек A и B должны совпадать\n\r";
-
-                    isCorrect = false;
-                }
-
-                if (withPoints_[3].Y >= withPoints_[0].Y || withPoints_[3].Y >= withPoints_[2].Y) {
-                    errorString += "координата y точки A должна быть меньше чем у B и D\n\r";
-
-                    isCorrect = false;
-                }
+                return false;
             }
 
-            if (isCorrect == false)
-                MessageBox.Show (errorString);
+            if (mainPoints[2].X <= mainPoints[1].X)
+            {
+                MessageBox.Show("координата х точки C должна быть меньше чем у D\n\r");
 
-            return isCorrect;
+                return false;
+            }
+
+            if (mainPoints[1].Y <= mainPoints[0].Y || mainPoints[1].Y <= mainPoints[2].Y) {
+                MessageBox.Show("координата у точки C должна быть больше чем у B и D\n\r");
+
+                return false;
+            }
+
+            if (mainPoints[3].X != mainPoints[0].X) {
+                MessageBox.Show("координата x точек A и B должны совпадать\n\r");
+
+                return false;
+            }
+
+            if (mainPoints[3].Y >= mainPoints[0].Y || mainPoints[3].Y >= mainPoints[2].Y) {
+                MessageBox.Show("координата y точки A должна быть меньше чем у B и D\n\r");
+
+                return false;
+            }
+
+            return true;
         }
 
         private void controlCheck_CheckedChanged(object sender, EventArgs e)
         {
-            bottomText.Text = "3 0";
-            leftPoint.Text = "3 17";
-            upPoint.Text = "13 20";
-            rightPoint.Text = "23 15";
-            withPoints_[0] = new Point (3, 17);
-            withPoints_[1] = new Point(13, 20);
-            withPoints_[2] = new Point(23, 15);
-            withPoints_[3] = new Point(3, 0);
+            bottomText.Text = "5 1";
+            leftPoint.Text = "5 18";
+            upPoint.Text = "15 21";
+            rightPoint.Text = "25 16";
+            mainPoints[0] = new Point (5, 18);
+            mainPoints[1] = new Point(15, 21);
+            mainPoints[2] = new Point(25, 16);
+            mainPoints[3] = new Point(5, 1);
         }
 
         private void manualCheck_CheckedChanged(object sender, EventArgs e)

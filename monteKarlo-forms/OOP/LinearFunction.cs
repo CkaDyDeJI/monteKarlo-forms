@@ -1,21 +1,21 @@
 ﻿namespace monteKarlo_forms
 {
-    class LinearFunction
+    class Line
     {
-        private double k_;
-        private double b_;
+        private double k;
+        private double b;
 
 
-        public LinearFunction(Point firstPoint, Point secondPoint)
+        public Line(Point firstPoint, Point secondPoint)
         {
-            k_ = (secondPoint.Y - firstPoint.Y) / (secondPoint.X - firstPoint.X);
-            b_ = firstPoint.Y - k_ * firstPoint.X;
+            k = (secondPoint.Y - firstPoint.Y) / (secondPoint.X - firstPoint.X);
+            b = firstPoint.Y - k * firstPoint.X;
         }
 
 
         public bool isInside(double x, double y)
         {
-            return (y < (k_ * x + b_)) ? true : false;
+            return (y < (k * x + b)) ? true : false;
         }
     }
 }

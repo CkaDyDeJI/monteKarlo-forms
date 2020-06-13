@@ -2,27 +2,27 @@
 {
     class Point
     {
-        private double x_;
-        private double y_;
+        private double x;
+        private double y;
 
 
         public double X
         {
-            get => x_;
-            set => x_ = value;
+            get => x;
+            set => x = value;
         }
 
 
         public double Y
         {
-            get => y_;
-            set => y_ = value;
+            get => y;
+            set => y = value;
         }
 
         public Point(double newX, double newY)
         {
-            x_ = newX;
-            y_ = newY;
+            x = newX;
+            y = newY;
         }
     }
 }

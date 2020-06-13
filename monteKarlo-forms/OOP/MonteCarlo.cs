@@ -9,12 +9,12 @@ namespace monteKarlo_forms
 
     class MonteCarlo
     {
-        private Figure mainFigure_;
+        private Figure figure;
 
 
         public MonteCarlo (Point[] pointsArray)
         {
-            mainFigure_ = new Figure (pointsArray);
+            figure = new Figure (pointsArray);
         }
 
 
@@ -22,10 +22,10 @@ namespace monteKarlo_forms
         {
             Stopwatch watch = new Stopwatch();
 
-            var actualSquare = mainFigure_.calculateActualSquare();
+            var actualSquare = figure.calculateActualSquare();
 
             var number = new Random();
-            int insideCounter;
+            int сounter;
             double randomX;
             double randomY;
             for (var i = 0; i < 5; i++)
@@ -33,19 +33,19 @@ namespace monteKarlo_forms
                 watch.Start();
                 double n = Math.Pow(10, i + 3);
 
-                insideCounter = 0;
+                сounter = 0;
                 for (var j = 0; j < n; j++)
                 {
-                    randomX = mainFigure_.minX_ + ToDouble(number.Next(0, 132767)) / 132767 * (mainFigure_.maxX_ - mainFigure_.minX_);
-                    randomY = mainFigure_.minY_ + ToDouble(number.Next(0, 132767)) / 132767 * (mainFigure_.maxY_ - mainFigure_.minY_);
-                    if (mainFigure_.isInside(randomX, randomY))
-                        insideCounter++;
+                    randomX = figure.minX + ToDouble(number.Next(0, 42757)) / 42757 * (figure.maxX - figure.minX);
+                    randomY = figure.minY + ToDouble(number.Next(0, 42757)) / 42757 * (figure.maxY - figure.minY);
+                    if (figure.isInside(randomX, randomY))
+                        сounter++;
                 }
 
-                var square = mainFigure_.square_ * insideCounter / n;
+                var square = figure.square * сounter / n;
                 watch.Stop();
 
-                table.Rows.Add (n, insideCounter, actualSquare, square,
+                table.Rows.Add (n, сounter, actualSquare, square,
                     Math.Round (Math.Abs (square - actualSquare) / actualSquare * 100, 2), watch.ElapsedMilliseconds);
 
                 watch.Reset();

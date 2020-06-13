@@ -54,7 +54,7 @@ namespace monteKarlo_forms
 
             try
             {
-                temp = rightPoint.Text.Replace('.', ',').Split(' ');
+                temp = bottomPoint.Text.Replace('.', ',').Split(' ');
 
                 withPoints_[0] = new Point(ToDouble(temp[0]), ToDouble(temp[1]));
             }
@@ -134,7 +134,7 @@ namespace monteKarlo_forms
 
         private void controlCheck_CheckedChanged(object sender, EventArgs e)
         {
-            bottomText.Text = "3 0";
+            bottomPoint.Text = "3 0";
             leftPoint.Text = "3 17";
             upPoint.Text = "13 20";
             rightPoint.Text = "23 15";
@@ -146,7 +146,7 @@ namespace monteKarlo_forms
 
         private void manualCheck_CheckedChanged(object sender, EventArgs e)
         {
-            bottomText.Text = "";
+            bottomPoint.Text = "";
             leftPoint.Text = "";
             upPoint.Text = "";
             rightPoint.Text = "";
@@ -154,7 +154,7 @@ namespace monteKarlo_forms
 
         private void clearButton_Click(object sender, EventArgs e)
         {
-            bottomText.Text = "";
+            bottomPoint.Text = "";
             leftPoint.Text = "";
             upPoint.Text = "";
             rightPoint.Text = "";

@@ -30,6 +30,8 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
+            this.aLabel = new System.Windows.Forms.Label();
+            this.bottomPoint = new System.Windows.Forms.TextBox();
             this.clearButton = new System.Windows.Forms.Button();
             this.controlCheck = new System.Windows.Forms.RadioButton();
             this.manualCheck = new System.Windows.Forms.RadioButton();
@@ -53,8 +55,6 @@
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.statusLabel = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripContainer1 = new System.Windows.Forms.ToolStripContainer();
-            this.bottomText = new System.Windows.Forms.TextBox();
-            this.aLabel = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -79,7 +79,7 @@
             // splitContainer1.Panel1
             // 
             this.splitContainer1.Panel1.Controls.Add(this.aLabel);
-            this.splitContainer1.Panel1.Controls.Add(this.bottomText);
+            this.splitContainer1.Panel1.Controls.Add(this.bottomPoint);
             this.splitContainer1.Panel1.Controls.Add(this.clearButton);
             this.splitContainer1.Panel1.Controls.Add(this.controlCheck);
             this.splitContainer1.Panel1.Controls.Add(this.manualCheck);
@@ -98,6 +98,22 @@
             this.splitContainer1.Size = new System.Drawing.Size(1143, 565);
             this.splitContainer1.SplitterDistance = 186;
             this.splitContainer1.TabIndex = 10;
+            // 
+            // aLabel
+            // 
+            this.aLabel.AutoSize = true;
+            this.aLabel.Location = new System.Drawing.Point(49, 27);
+            this.aLabel.Name = "aLabel";
+            this.aLabel.Size = new System.Drawing.Size(93, 13);
+            this.aLabel.TabIndex = 23;
+            this.aLabel.Text = "Нижняя точка (a)";
+            // 
+            // bottomPoint
+            // 
+            this.bottomPoint.Location = new System.Drawing.Point(155, 24);
+            this.bottomPoint.Name = "bottomPoint";
+            this.bottomPoint.Size = new System.Drawing.Size(100, 20);
+            this.bottomPoint.TabIndex = 22;
             // 
             // clearButton
             // 
@@ -307,22 +323,6 @@
             this.toolStripContainer1.TabIndex = 12;
             this.toolStripContainer1.Text = "toolStripContainer1";
             // 
-            // bottomText
-            // 
-            this.bottomText.Location = new System.Drawing.Point(155, 24);
-            this.bottomText.Name = "bottomText";
-            this.bottomText.Size = new System.Drawing.Size(100, 20);
-            this.bottomText.TabIndex = 22;
-            // 
-            // aLabel
-            // 
-            this.aLabel.AutoSize = true;
-            this.aLabel.Location = new System.Drawing.Point(49, 27);
-            this.aLabel.Name = "aLabel";
-            this.aLabel.Size = new System.Drawing.Size(93, 13);
-            this.aLabel.TabIndex = 23;
-            this.aLabel.Text = "Нижняя точка (a)";
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -377,7 +377,7 @@
         private System.Windows.Forms.RadioButton manualCheck;
         private System.Windows.Forms.Button clearButton;
         private System.Windows.Forms.Label aLabel;
-        private System.Windows.Forms.TextBox bottomText;
+        private System.Windows.Forms.TextBox bottomPoint;
     }
 }
 
